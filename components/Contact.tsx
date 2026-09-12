@@ -1,9 +1,96 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 
 export default function Contact(){
+
+
+const [loading,setLoading] = useState(false);
+
+const [status,setStatus] = useState("");
+
+
+
+async function handleSubmit(e:any){
+
+e.preventDefault();
+
+
+const form = e.currentTarget;
+
+
+const formData = new FormData(form);
+
+
+setLoading(true);
+
+setStatus("");
+
+
+
+try{
+
+
+const response = await fetch("/api/contact",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+name:formData.get("name"),
+
+email:formData.get("email"),
+
+company:formData.get("company"),
+
+service:formData.get("service"),
+
+message:formData.get("message")
+
+})
+
+});
+
+
+
+if(response.ok){
+
+setStatus("✓ Thank you! Your message has been sent.");
+
+form.reset();
+
+}
+
+else{
+
+setStatus("Something went wrong. Please try again.");
+
+}
+
+
+
+}
+
+catch(error){
+
+setStatus("Something went wrong. Please try again.");
+
+}
+
+
+
+setLoading(false);
+
+
+}
+
+
 
 
 return(
@@ -31,7 +118,6 @@ mx-auto
 >
 
 
-{/* Heading */}
 
 <div
 
@@ -41,6 +127,7 @@ mb-16
 "
 
 >
+
 
 <p
 
@@ -56,6 +143,7 @@ text-sm
 Contact
 
 </p>
+
 
 
 <h2
@@ -79,6 +167,7 @@ Let's Build Something
 </h2>
 
 
+
 <p
 
 className="
@@ -96,7 +185,9 @@ Let's create a digital system that generates measurable growth.
 </p>
 
 
+
 </div>
+
 
 
 
@@ -115,10 +206,16 @@ gap-10
 
 
 
+
+
+
+
 {/* FORM */}
 
 
 <motion.form
+
+onSubmit={handleSubmit}
 
 initial={{
 opacity:0,
@@ -148,7 +245,12 @@ space-y-5
 
 
 
+
 <input
+
+name="name"
+
+required
 
 placeholder="Your Name"
 
@@ -169,11 +271,16 @@ focus:border-red-500
 
 
 
+
 <input
 
-placeholder="Email Address"
+name="email"
+
+required
 
 type="email"
+
+placeholder="Email Address"
 
 className="
 w-full
@@ -192,7 +299,10 @@ focus:border-red-500
 
 
 
+
 <input
+
+name="company"
 
 placeholder="Company / Brand Name"
 
@@ -215,7 +325,13 @@ focus:border-red-500
 
 
 
+
+
 <select
+
+name="service"
+
+required
 
 className="
 w-full
@@ -233,7 +349,7 @@ focus:border-red-500
 >
 
 
-<option>
+<option value="">
 Select Service Needed
 </option>
 
@@ -280,7 +396,12 @@ Analytics & Tracking
 
 
 
+
 <textarea
+
+name="message"
+
+required
 
 placeholder="Tell me about your project"
 
@@ -304,7 +425,11 @@ focus:border-red-500
 
 
 
+
+
 <button
+
+disabled={loading}
 
 type="submit"
 
@@ -312,6 +437,7 @@ className="
 w-full
 bg-red-600
 hover:bg-red-700
+disabled:opacity-50
 text-white
 py-4
 rounded-xl
@@ -321,10 +447,34 @@ transition
 
 >
 
-Send Message
+{loading ? "Sending..." : "Send Message"}
 
 </button>
 
+
+
+
+{
+status && (
+
+<p
+
+className="
+text-center
+text-green-400
+text-sm
+pt-2
+"
+
+>
+
+{status}
+
+</p>
+
+)
+
+}
 
 
 
@@ -362,6 +512,7 @@ space-y-6
 "
 
 >
+
 
 
 
@@ -418,6 +569,8 @@ href="https://wa.me/923140209996?text=Hi%20Umer,%20I%20want%20to%20discuss%20a%2
 
 target="_blank"
 
+rel="noopener noreferrer"
+
 className="
 inline-block
 mt-6
@@ -436,8 +589,8 @@ WhatsApp Me
 </a>
 
 
-
 </div>
+
 
 
 
@@ -498,13 +651,18 @@ umer.iftikhar391@gmail.com
 
 
 
+
+
 </motion.div>
 
 
 
 
 
+
+
 </div>
+
 
 
 </div>
