@@ -6,17 +6,16 @@ export async function POST(request: Request){
 
 try{
 
-
 const data = await request.json();
 
 
 const {
 name,
 email,
+phone,
 company,
 service,
 message
-
 }=data;
 
 
@@ -26,11 +25,8 @@ const transporter = nodemailer.createTransport({
 service:"gmail",
 
 auth:{
-
 user:process.env.EMAIL_USER,
-
 pass:process.env.EMAIL_PASSWORD
-
 }
 
 });
@@ -43,7 +39,7 @@ from:process.env.EMAIL_USER,
 
 to:"umer.iftikhar391@gmail.com",
 
-subject:`New Portfolio Lead From ${name}`,
+subject:`New Portfolio Lead - ${name}`,
 
 html:`
 
@@ -52,6 +48,8 @@ html:`
 <p><b>Name:</b> ${name}</p>
 
 <p><b>Email:</b> ${email}</p>
+
+<p><b>Phone:</b> ${phone}</p>
 
 <p><b>Company:</b> ${company}</p>
 
@@ -66,9 +64,7 @@ html:`
 
 
 return NextResponse.json({
-
 success:true
-
 });
 
 
@@ -80,15 +76,12 @@ console.log(error);
 
 
 return NextResponse.json(
-
 {
 success:false
 },
-
 {
 status:500
 }
-
 );
 
 

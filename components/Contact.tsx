@@ -20,12 +20,10 @@ e.preventDefault();
 
 const form = e.currentTarget;
 
-
 const formData = new FormData(form);
 
 
 setLoading(true);
-
 setStatus("");
 
 
@@ -46,6 +44,8 @@ body:JSON.stringify({
 name:formData.get("name"),
 
 email:formData.get("email"),
+
+phone:formData.get("phone"),
 
 company:formData.get("company"),
 
@@ -84,11 +84,11 @@ setStatus("Something went wrong. Please try again.");
 }
 
 
-
 setLoading(false);
 
 
 }
+
 
 
 
@@ -108,55 +108,37 @@ py-32
 >
 
 
-<div
-
-className="
+<div className="
 max-w-6xl
 mx-auto
-"
-
->
+">
 
 
-
-<div
-
-className="
+<div className="
 text-center
 mb-16
-"
-
->
+">
 
 
-<p
-
-className="
+<p className="
 text-red-500
 uppercase
 tracking-[6px]
 text-sm
-"
-
->
+">
 
 Contact
 
 </p>
 
 
-
-<h2
-
-className="
+<h2 className="
 text-white
 text-5xl
 md:text-6xl
 font-bold
 mt-5
-"
-
->
+">
 
 Let's Build Something
 
@@ -167,23 +149,17 @@ Let's Build Something
 </h2>
 
 
-
-<p
-
-className="
+<p className="
 text-gray-400
 mt-6
 max-w-2xl
 mx-auto
-"
-
->
+">
 
 Have a project, campaign or business idea?
 Let's create a digital system that generates measurable growth.
 
 </p>
-
 
 
 </div>
@@ -192,19 +168,11 @@ Let's create a digital system that generates measurable growth.
 
 
 
-
-
-<div
-
-className="
+<div className="
 grid
 lg:grid-cols-2
 gap-10
-"
-
->
-
-
+">
 
 
 
@@ -244,8 +212,6 @@ space-y-5
 >
 
 
-
-
 <input
 
 name="name"
@@ -268,7 +234,6 @@ focus:border-red-500
 "
 
 />
-
 
 
 
@@ -299,6 +264,32 @@ focus:border-red-500
 
 
 
+<input
+
+name="phone"
+
+required
+
+type="tel"
+
+placeholder="Phone Number"
+
+className="
+w-full
+bg-black
+border
+border-white/10
+rounded-xl
+px-5
+py-4
+text-white
+outline-none
+focus:border-red-500
+"
+
+/>
+
+
 
 <input
 
@@ -320,8 +311,6 @@ focus:border-red-500
 "
 
 />
-
-
 
 
 
@@ -395,8 +384,6 @@ Analytics & Tracking
 
 
 
-
-
 <textarea
 
 name="message"
@@ -426,12 +413,11 @@ focus:border-red-500
 
 
 
-
 <button
 
-disabled={loading}
-
 type="submit"
+
+disabled={loading}
 
 className="
 w-full
@@ -457,16 +443,11 @@ transition
 {
 status && (
 
-<p
-
-className="
+<p className="
 text-center
 text-green-400
 text-sm
-pt-2
-"
-
->
+">
 
 {status}
 
@@ -489,6 +470,7 @@ pt-2
 
 
 {/* CONTACT INFO */}
+
 
 
 <motion.div
@@ -515,52 +497,36 @@ space-y-6
 
 
 
-
-
-<div
-
-className="
+<div className="
 rounded-3xl
 border
 border-white/10
 bg-white/[0.04]
 backdrop-blur-xl
 p-8
-"
-
->
+">
 
 
-<h3
-
-className="
+<h3 className="
 text-white
 text-2xl
 font-bold
-"
-
->
+">
 
 Let's Connect
 
 </h3>
 
 
-
-<p
-
-className="
+<p className="
 text-gray-400
 mt-4
-"
-
->
+">
 
 Discuss your next marketing campaign,
 website or growth project.
 
 </p>
-
 
 
 <a
@@ -595,31 +561,21 @@ WhatsApp Me
 
 
 
-
-
-<div
-
-className="
+<div className="
 rounded-3xl
 border
 border-white/10
 bg-white/[0.04]
 backdrop-blur-xl
 p-8
-"
-
->
+">
 
 
-<h3
-
-className="
+<h3 className="
 text-white
 text-xl
 font-bold
-"
-
->
+">
 
 Email
 
@@ -649,20 +605,13 @@ umer.iftikhar391@gmail.com
 
 
 
-
-
-
-
 </motion.div>
 
 
 
 
 
-
-
 </div>
-
 
 
 </div>
