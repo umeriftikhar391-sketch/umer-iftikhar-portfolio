@@ -4,36 +4,49 @@ import { useEffect } from "react";
 import Lenis from "lenis";
 
 
-export default function SmoothScroll() {
+export default function SmoothScroll(){
+
+useEffect(()=>{
 
 
-useEffect(() => {
+const isMobile = window.innerWidth < 768;
 
 
-const lenis = new Lenis();
+if(isMobile){
+  return;
+}
 
 
-function animation(time:number){
+const lenis = new Lenis({
+
+duration:1.1,
+
+smoothWheel:true,
+
+});
+
+
+function raf(time:number){
 
 lenis.raf(time);
 
-requestAnimationFrame(animation);
+requestAnimationFrame(raf);
 
 }
 
 
-requestAnimationFrame(animation);
+requestAnimationFrame(raf);
 
 
 
-return () => {
+return()=>{
 
 lenis.destroy();
 
 };
 
 
-}, []);
+},[]);
 
 
 

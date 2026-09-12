@@ -41,9 +41,7 @@ return (
 
 
 
-{/* Smooth Scrolling */}
 
-<SmoothScroll />
 
 
 

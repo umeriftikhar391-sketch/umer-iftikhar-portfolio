@@ -37,44 +37,30 @@ text-white
 
 
 
-<SectionReveal>
 <Clients />
-</SectionReveal>
 
 
-<SectionReveal>
+
 <Services />
-</SectionReveal>
 
 
-<SectionReveal>
+
 <CaseStudies />
-</SectionReveal>
 
-
-<SectionReveal>
 <Stack />
-</SectionReveal>
 
 
-<SectionReveal>
 <Results />
-</SectionReveal>
 
 
-<SectionReveal>
 <About />
-</SectionReveal>
 
 
-<SectionReveal>
 <Contact />
-</SectionReveal>
 
 
-<SectionReveal>
 <Footer />
-</SectionReveal>
+
 
 
 </main>
