@@ -488,13 +488,10 @@ duration:1
 
 className="
 hidden
-
 lg:flex
-
 justify-center
-
 relative
-
+overflow-visible
 "
 
 >
@@ -507,6 +504,7 @@ relative
 
 className="
 w-[350px]
+max-w-full
 
 rounded-3xl
 
