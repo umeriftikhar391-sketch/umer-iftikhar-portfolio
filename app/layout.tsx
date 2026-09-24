@@ -37,13 +37,13 @@ return (
 <body className="bg-black text-white">
 
 
-{/* Google Tag Manager */}
+{/* Google Tag Manager (noscript) */}
 
 <noscript>
 
 <iframe
 
-src="https://www.googletagmanager.com/ns.html?id=GTM-59B6S87"
+src="https://www.googletagmanager.com/ns.html?id=GTM-59B86S87"
 
 height="0"
 
@@ -62,6 +62,8 @@ visibility:"hidden"
 </noscript>
 
 
+
+{/* Google Tag Manager */}
 
 <Script
 
@@ -101,7 +103,7 @@ j.src=
 
 f.parentNode.insertBefore(j,f);
 
-})(window,document,'script','dataLayer','GTM-59B6S87');
+})(window,document,'script','dataLayer','GTM-59B86S87');
 
 `}
 
@@ -115,13 +117,9 @@ f.parentNode.insertBefore(j,f);
 
 
 
-
-
 {/* Smooth Scroll */}
 
 <SmoothScroll />
-
-
 
 
 
