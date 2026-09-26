@@ -64,6 +64,7 @@ Performance Marketing Specialist helping businesses grow through paid ads, SEO, 
 
 
 
+
 {/* Navigation */}
 
 <div>
@@ -87,19 +88,19 @@ text-gray-400
 "
 >
 
-<a href="#home" className="block hover:text-white">
+<a href="#home" className="block hover:text-white transition">
 Home
 </a>
 
-<a href="#about" className="block hover:text-white">
+<a href="#about" className="block hover:text-white transition">
 About
 </a>
 
-<a href="#services" className="block hover:text-white">
+<a href="#services" className="block hover:text-white transition">
 Services
 </a>
 
-<a href="#projects" className="block hover:text-white">
+<a href="#projects" className="block hover:text-white transition">
 Case Studies
 </a>
 
@@ -113,7 +114,9 @@ Case Studies
 
 
 
-{/* Contact */}
+
+
+{/* Contact + Social */}
 
 <div>
 
@@ -139,32 +142,115 @@ text-gray-400
 
 
 <a
+
 href="mailto:umer.iftikhar391@gmail.com"
-className="block hover:text-white"
+
+className="
+block
+hover:text-white
+transition
+"
+
 >
-Email
+
+umer.iftikhar391@gmail.com
+
 </a>
 
 
 
+
 <a
+
 href="https://wa.me/923140209996"
-className="block hover:text-white"
+
 target="_blank"
+
+rel="noopener noreferrer"
+
+className="
+block
+hover:text-white
+transition
+"
+
 >
+
 WhatsApp
+
 </a>
+
 
 
 
 <a
-href="#"
-className="block hover:text-white"
+
+href="https://www.linkedin.com/in/umer-iftikhar02/"
+
+target="_blank"
+
+rel="noopener noreferrer"
+
+className="
+block
+hover:text-white
+transition
+"
+
 >
+
 LinkedIn
+
 </a>
 
 
+
+
+<a
+
+href="https://www.instagram.com/umer.iftikhardigi"
+
+target="_blank"
+
+rel="noopener noreferrer"
+
+className="
+block
+hover:text-white
+transition
+"
+
+>
+
+Instagram
+
+</a>
+
+
+
+
+<a
+
+href="https://www.facebook.com/profile.php?id=61591126276980"
+
+target="_blank"
+
+rel="noopener noreferrer"
+
+className="
+block
+hover:text-white
+transition
+"
+
+>
+
+Facebook
+
+</a>
+
+
+
 </div>
 
 
@@ -172,7 +258,10 @@ LinkedIn
 
 
 
+
+
 </div>
+
 
 
 
