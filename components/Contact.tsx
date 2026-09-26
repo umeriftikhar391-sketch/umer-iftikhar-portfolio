@@ -103,6 +103,7 @@ className="
 bg-black
 px-6
 py-32
+overflow-hidden
 "
 
 >
@@ -132,21 +133,36 @@ Contact
 </p>
 
 
+
 <h2 className="
 text-white
-text-5xl
+text-4xl
+sm:text-5xl
 md:text-6xl
 font-bold
 mt-5
+leading-tight
+break-words
 ">
 
-Let's Build Something
+Let's Build
 
-<span className="text-red-500">
- Powerful
+<br />
+
+Something
+
+<span className="
+text-red-500
+block
+md:inline
+">
+
+Powerful
+
 </span>
 
 </h2>
+
 
 
 <p className="
@@ -168,11 +184,14 @@ Let's create a digital system that generates measurable growth.
 
 
 
+
+
 <div className="
 grid
 lg:grid-cols-2
 gap-10
 ">
+
 
 
 
@@ -210,6 +229,7 @@ space-y-5
 "
 
 >
+
 
 
 <input
@@ -529,6 +549,7 @@ website or growth project.
 </p>
 
 
+
 <a
 
 href="https://wa.me/923140209996?text=Hi%20Umer,%20I%20want%20to%20discuss%20a%20project."
@@ -556,6 +577,8 @@ WhatsApp Me
 
 
 </div>
+
+
 
 
 
