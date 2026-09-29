@@ -1,409 +1,60 @@
-"use client";
-
-import { motion } from "framer-motion";
-
-
-const brands = [
-
-{
-name:"Sputnik",
-icon:"👟",
-industry:"Footwear Brand",
-work:"Built a Shopify ecommerce website for a Pakistani footwear brand and created a strong online shopping experience.",
-services:[
-"Shopify",
-"Ecommerce Development"
-],
-},
-
-
-{
-name:"PetsInn",
-icon:"🐾",
-industry:"Pet Food Brand",
-work:"Built Shopify store, managed Meta Ads campaigns and SEO strategy to strengthen online presence and generate growth.",
-services:[
-"Shopify",
-"Meta Ads",
-"SEO"
-],
-},
-
-
-{
-name:"Khatkaar",
-icon:"✒️",
-industry:"Urdu Calligraphy Brand",
-work:"Created Shopify store and helped the brand sell products through performance-driven Meta advertising campaigns.",
-services:[
-"Shopify",
-"Meta Ads",
-"Ecommerce"
-],
-},
-
-
-{
-name:"Gul Khan Truck Art Corporate",
-icon:"🎁",
-industry:"Corporate Gifting",
-featured:true,
-work:"Managed Meta Ads, Google Ads, SEO and email marketing campaigns to generate high-value business growth.",
-services:[
-"Meta Ads",
-"Google Ads",
-"SEO",
-"Email Marketing"
-],
-},
-
-
-{
-name:"GulKhan.pk",
-icon:"🛒",
-industry:"Truck Art Ecommerce",
-work:"Migrated the website from WordPress to Shopify while maintaining SEO rankings and improving ecommerce performance.",
-services:[
-"Shopify Migration",
-"SEO",
-"Ecommerce"
-],
-},
-
-
-{
-name:"Decordreams",
-icon:"🛋️",
-industry:"Furniture & Interior",
-work:"Created a WordPress website and managed digital advertising campaigns to attract furniture buyers.",
-services:[
-"WordPress",
-"Meta Ads",
-"Lead Generation"
-],
-},
-
-
-{
-name:"Building Block Junior & High",
-icon:"🎓",
-industry:"Education",
-work:"Managed Meta Ads campaigns to generate admission leads from targeted audiences in nearby areas.",
-services:[
-"Meta Ads",
-"Lead Generation",
-"Local Marketing"
-],
-},
-
-
-];
-
-
-
-export default function Brands(){
-
-
-return(
-
-<section
-className="
-py-32
-bg-black
-px-6
-"
->
-
-
-<div
-className="
-max-w-7xl
-mx-auto
-"
->
-
-
-<p
-className="
-text-red-500
-uppercase
-tracking-[6px]
-text-sm
-text-center
-"
->
-Business Growth
-</p>
-
-
-
-<h2
-className="
-text-white
-text-5xl
-md:text-7xl
-font-bold
-text-center
-mt-5
-"
->
-
-Brands I Helped
-
-<span className="text-red-500">
- Grow
-</span>
-
-</h2>
-
-
-
-<p
-className="
-text-gray-400
-max-w-xl
-text-center
-mx-auto
-mt-6
-"
->
-
-Businesses I helped through digital marketing,
-ecommerce development and performance campaigns.
-
-</p>
-
-
-
-<div
-className="
-grid
-md:grid-cols-3
-gap-6
-mt-16
-"
->
-
-
-{
-brands.map((brand)=>(
-
-
-<motion.div
-
-key={brand.name}
-
-whileHover={{
-y:-12,
-scale:1.02
-}}
-
-transition={{
-duration:.3
-}}
-
-className="
-group
-relative
-rounded-3xl
-border
-border-white/10
-bg-white/[0.04]
-backdrop-blur-xl
-p-8
-overflow-hidden
-"
-
->
-
-
-<div
-className="
-absolute
-inset-0
-bg-red-600/0
-group-hover:bg-red-600/10
-transition
-duration-500
-"
-/>
-
-
-
-<div
-className="
-relative
-z-10
-"
->
-
-
-<div
-className="
-flex
-justify-between
-items-start
-"
->
-
-
-<div
-className="
-flex
-items-center
-gap-4
-"
->
-
-
-<div
-className="
-w-14
-h-14
-rounded-2xl
-bg-white/5
-border
-border-white/10
-flex
-items-center
-justify-center
-text-3xl
-"
->
-
-{brand.icon}
-
-</div>
-
-
-
-<h3
-className="
-text-white
-text-xl
-font-bold
-"
->
-
-{brand.name}
-
-</h3>
-
-
-</div>
-
-
-
-{
-brand.featured &&
-
-<span
-className="
-bg-red-600
-text-white
-text-xs
-px-3
-py-1
-rounded-full
-"
->
-Featured
-</span>
-
-}
-
-
-</div>
-
-
-
-<p
-className="
-text-red-500
-mt-5
-"
->
-
-{brand.industry}
-
-</p>
-
-
-
-
-<p
-className="
-text-gray-400
-mt-5
-leading-relaxed
-"
->
-
-{brand.work}
-
-</p>
-
-
-
-<div
-className="
-flex
-flex-wrap
-gap-2
-mt-6
-"
->
-
-
-{
-brand.services.map((service)=>(
-
-<span
-key={service}
-className="
-text-xs
-text-gray-300
-border
-border-white/20
-rounded-full
-px-3
-py-2
-"
->
-
-{service}
-
-</span>
-
-))
-
-}
-
-
-</div>
-
-
-</div>
-
-
-</motion.div>
-
-
-))
-
-}
-
-
-</div>
-
-
-
-</div>
-
-
-</section>
-
-
-)
-
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import Reveal from "@/components/Reveal";
+import SectionHeading from "@/components/ui/SectionHeading";
+import { caseStudies } from "@/lib/case-studies";
+
+export default function Clients() {
+  return (
+    <section className="px-5 py-24 sm:px-6 lg:py-32">
+      <div className="mx-auto max-w-7xl">
+        <SectionHeading
+          align="center"
+          eyebrow="Business Growth"
+          title={
+            <>
+              Brands I Helped <span className="text-red-500">Grow</span>
+            </>
+          }
+          intro="From heritage craft brands to schools and ecommerce stores, businesses trust me to build the systems that bring in customers."
+        />
+
+        <div className="mt-16 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {caseStudies.map((brand, i) => (
+            <Reveal key={brand.slug} delay={(i % 3) * 0.08}>
+              <Link
+                href={`/case-studies/${brand.slug}`}
+                className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-7 backdrop-blur-xl transition duration-500 hover:-translate-y-2 hover:border-red-500/40"
+              >
+                <div className="absolute inset-0 bg-red-600/0 transition duration-500 group-hover:bg-red-600/10" />
+                <div className="relative z-10 flex h-full flex-col">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex items-center gap-4">
+                      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/5 font-bold text-white">
+                        {brand.monogram}
+                      </div>
+                      <h3 className="text-xl font-bold text-white">{brand.client}</h3>
+                    </div>
+                    {brand.featured && <span className="rounded-full bg-red-600 px-3 py-1 text-xs text-white">Featured</span>}
+                  </div>
+                  <p className="mt-5 text-red-500">{brand.industry}</p>
+                  <p className="mt-3 flex-1 leading-relaxed text-gray-400">{brand.summary}</p>
+                  <div className="mt-6 flex items-center justify-between gap-4">
+                    <div className="flex flex-wrap gap-2">
+                      {brand.channels.slice(0, 3).map((c) => (
+                        <span key={c} className="rounded-full border border-white/20 px-3 py-1.5 text-xs text-gray-300">
+                          {c}
+                        </span>
+                      ))}
+                    </div>
+                    <ArrowUpRight className="h-5 w-5 shrink-0 text-white/30 transition group-hover:text-red-500" />
+                  </div>
+                </div>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
