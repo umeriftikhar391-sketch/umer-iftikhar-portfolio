@@ -1,53 +1,110 @@
 @import "tailwindcss";
 
+@theme inline {
+  --font-sans: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+}
 
 :root {
   --background: #050505;
   --foreground: #ffffff;
 }
 
-
 * {
   box-sizing: border-box;
 }
 
-
 html {
-  width:100%;
-  overflow-x:hidden;
+  width: 100%;
+  overflow-x: hidden;
 }
-
 
 body {
-  width:100%;
-  max-width:100%;
-  overflow-x:hidden;
-  background:#050505;
-  color:white;
-  -webkit-font-smoothing:antialiased;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  background: #050505;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
-
 
 main {
-  width:100%;
-  overflow-x:hidden;
+  width: 100%;
+  overflow-x: hidden;
 }
-
 
 section {
-  max-width:100vw;
-  overflow:hidden;
+  max-width: 100vw;
+  overflow: hidden;
 }
-
 
 img,
 video {
-  max-width:100%;
-  height:auto;
+  max-width: 100%;
+  height: auto;
 }
 
-
 ::selection {
-  background:#ef4444;
-  color:white;
+  background: #ef4444;
+  color: white;
+}
+
+:focus-visible {
+  outline: 2px solid #ef4444;
+  outline-offset: 3px;
+}
+
+/* Page loader: pure CSS so it never waits on JavaScript to disappear. */
+.page-loader {
+  animation: loader-out 0.45s ease 0.9s forwards;
+}
+.page-loader-logo {
+  animation: loader-in 0.6s ease both;
+}
+.page-loader-bar {
+  width: 0;
+  max-width: 120px;
+  animation: loader-bar 0.8s ease 0.1s forwards;
+}
+@keyframes loader-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@keyframes loader-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+@keyframes loader-bar {
+  to {
+    width: 100%;
+  }
+}
+
+/* Background glow drift (desktop only) */
+@media (min-width: 768px) {
+  .bg-glow {
+    animation: glow-drift 12s ease-in-out infinite;
+  }
+}
+@keyframes glow-drift {
+  50% {
+    transform: translate(60px, -40px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-loader {
+    display: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
