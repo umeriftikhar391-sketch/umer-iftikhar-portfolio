@@ -38,6 +38,10 @@ GTM (`NEXT_PUBLIC_GTM_ID`) loads on every page. These events are pushed to `data
 | `whatsapp_click` | Any `wa.me` link clicked | `link_text`, `page_path` |
 | `email_click` | Any `mailto:` link clicked | `link_text`, `page_path` |
 | `phone_click` | Any `tel:` link clicked | `link_text`, `page_path` |
+| `assistant_open` | Floating assistant opened | `page_path` |
+| `assistant_form_start` | Assistant form opened (optionally from a service chip) | `service` |
+
+Leads sent from the assistant have `form_source = assistant-widget`.
 
 If `NEXT_PUBLIC_META_PIXEL_ID` is set, the Pixel loads directly and `Lead` / `Contact` events fire automatically.
 

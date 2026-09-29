@@ -8,6 +8,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
 import PageLoader from "@/components/PageLoader";
+import AssistantWidget from "@/components/AssistantWidget";
 import Analytics from "@/components/analytics/Analytics";
 import JsonLd from "@/components/seo/JsonLd";
 import { siteConfig, GTM_ID } from "@/lib/site";
@@ -91,6 +92,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           </main>
           <Footer />
         </div>
+
+        <AssistantWidget />
       </body>
     </html>
   );

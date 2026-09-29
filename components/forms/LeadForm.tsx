@@ -39,7 +39,16 @@ function Field({
   );
 }
 
-export default function LeadForm({ source, defaultService = "" }: { source: string; defaultService?: string }) {
+export default function LeadForm({
+  source,
+  defaultService = "",
+  compact = false,
+}: {
+  source: string;
+  defaultService?: string;
+  /** Single-column, borderless layout for tight spaces such as the assistant widget. */
+  compact?: boolean;
+}) {
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState<FieldErrors>({});
@@ -53,8 +62,8 @@ export default function LeadForm({ source, defaultService = "" }: { source: stri
 
   // On success the form collapses into a shorter panel; bring it into view (mostly matters on mobile).
   useEffect(() => {
-    if (status === "success") containerRef.current?.scrollIntoView({ block: "center", behavior: "smooth" });
-  }, [status]);
+    if (status === "success" && !compact) containerRef.current?.scrollIntoView({ block: "center", behavior: "smooth" });
+  }, [status, compact]);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -95,7 +104,10 @@ export default function LeadForm({ source, defaultService = "" }: { source: stri
   });
 
   return (
-    <div ref={containerRef} className="relative scroll-mt-28 rounded-3xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl sm:p-8">
+    <div
+      ref={containerRef}
+      className={compact ? "relative" : "relative scroll-mt-28 rounded-3xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl sm:p-8"}
+    >
       <AnimatePresence mode="wait" initial={false}>
         {status === "success" ? (
           <motion.div
@@ -103,7 +115,7 @@ export default function LeadForm({ source, defaultService = "" }: { source: stri
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            className="flex min-h-[420px] flex-col items-center justify-center text-center"
+            className={`flex flex-col items-center justify-center text-center ${compact ? "py-6" : "min-h-[420px]"}`}
             role="status"
             aria-live="polite"
           >
@@ -117,7 +129,7 @@ export default function LeadForm({ source, defaultService = "" }: { source: stri
               Your project details are with me. I review every enquiry personally and will get back to you with next
               steps and a few questions about your goals.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className={`mt-8 flex flex-col gap-3 ${compact ? "w-full" : "sm:flex-row"}`}>
               <a
                 href={whatsappLink("Hi Umer, I just submitted the form on your website.")}
                 target="_blank"
@@ -144,7 +156,7 @@ export default function LeadForm({ source, defaultService = "" }: { source: stri
             onSubmit={handleSubmit}
             className="space-y-5"
           >
-            <div className="grid gap-5 sm:grid-cols-2">
+            <div className={`grid gap-5 ${compact ? "" : "sm:grid-cols-2"}`}>
               <Field label="Name *" name="name" error={errors.name}>
                 <input {...aria("name")} required autoComplete="name" placeholder="Your full name" className={`${inputClass} border-white/10`} />
               </Field>
@@ -177,7 +189,7 @@ export default function LeadForm({ source, defaultService = "" }: { source: stri
                 {...aria("message")}
                 required
                 minLength={10}
-                rows={5}
+                rows={compact ? 3 : 5}
                 placeholder="What are you selling, what's your current monthly budget, and what result do you want in the next 90 days?"
                 className={`${inputClass} resize-y border-white/10`}
               />
