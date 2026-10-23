@@ -16,7 +16,7 @@ export function personSchema() {
     url: siteConfig.url,
     email: siteConfig.email,
     telephone: siteConfig.telephone,
-    address: { "@type": "PostalAddress", addressCountry: "PK" },
+    address: { "@type": "PostalAddress", addressCountry: "PK", addressLocality: "Karachi" },
     sameAs: Object.values(siteConfig.socials),
     knowsAbout: [...services.map((s) => s.name), "Performance Marketing", "Shopify", "Next.js", "GA4", "Google Tag Manager"],
   };
@@ -34,7 +34,7 @@ export function professionalServiceSchema() {
     email: siteConfig.email,
     telephone: siteConfig.telephone,
     founder: { "@id": personId },
-    address: { "@type": "PostalAddress", addressCountry: "PK" },
+    address: { "@type": "PostalAddress", addressCountry: "PK", addressLocality: "Karachi" },
     areaServed: "Worldwide",
     sameAs: Object.values(siteConfig.socials),
     hasOfferCatalog: {
@@ -66,7 +66,8 @@ export function serviceSchema(service: Service) {
     "@context": "https://schema.org",
     "@type": "Service",
     name: service.name,
-    serviceType: service.name,
+    "@id": absoluteUrl(`/services/${service.slug}#service`),
+    serviceType: service.slug === "meta-ads" ? "Meta advertising management" : service.name,
     description: service.seo.description,
     url: absoluteUrl(`/services/${service.slug}`),
     provider: { "@id": businessId },

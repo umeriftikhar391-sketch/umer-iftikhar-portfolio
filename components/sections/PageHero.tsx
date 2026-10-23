@@ -9,6 +9,7 @@ export default function PageHero({
   title,
   highlight,
   intro,
+  extraIntro,
   primary,
   secondary,
   breadcrumbs,
@@ -18,6 +19,7 @@ export default function PageHero({
   title: string;
   highlight?: string;
   intro: string;
+  extraIntro?: string;
   primary?: Cta;
   secondary?: Cta;
   breadcrumbs?: { name: string; path: string }[];
@@ -34,6 +36,7 @@ export default function PageHero({
               {title} {highlight && <span className="text-red-500">{highlight}</span>}
             </h1>
             <p className="mt-8 max-w-2xl text-pretty text-lg leading-8 text-gray-400">{intro}</p>
+            {extraIntro && <p className="mt-5 max-w-2xl text-pretty text-lg leading-8 text-gray-400">{extraIntro}</p>}
             {(primary || secondary) && (
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                 {primary && (

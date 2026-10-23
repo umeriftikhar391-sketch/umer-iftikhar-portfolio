@@ -34,96 +34,180 @@ export type Service = {
 
 export const services: Service[] = [
   {
-    slug: "meta-ads",
-    name: "Meta Ads",
-    icon: Target,
-    summary:
-      "Full-funnel Facebook and Instagram campaigns engineered around cost per lead, cost per purchase and return on ad spend.",
-    tags: ["Facebook Ads", "Instagram Ads", "Conversions API"],
-    seo: {
-      title: "Meta Ads Expert | Facebook & Instagram Ads Management",
-      description:
-        "Meta Ads expert managing Facebook and Instagram campaigns that lower cost per lead and scale ROAS. Pixel, Conversions API, creative testing and full-funnel strategy.",
-      keywords: ["Meta Ads Expert", "Facebook Ads Specialist", "Instagram Ads", "Meta Ads Manager"],
+    "slug": "meta-ads",
+    "name": "Meta Ads",
+    "icon": Target,
+    "summary": "Facebook and Instagram campaign management for ecommerce sales and lead generation, with tracking checks and reporting.",
+    "tags": [
+      "Facebook Ads",
+      "Instagram Ads",
+      "Conversions API"
+    ],
+    "seo": {
+      "title": "Meta Ads Expert | Facebook & Instagram Ads | Umer Iftikhar",
+      "description": "Umer Iftikhar is a Meta ads expert in Karachi managing Facebook and Instagram ads for ecommerce sales and lead generation, with tracking checks and reporting.",
+      "keywords": []
     },
-    hero: {
-      eyebrow: "Meta Ads Management",
-      headline: "Meta Ads That Turn Attention Into",
-      highlight: "Revenue",
-      intro:
-        "Most Meta ad accounts don't fail because of the platform. They fail because tracking is broken, creative is untested and budgets are spread too thin to learn. I build Facebook and Instagram campaigns on clean data, structured testing and a clear path from first impression to paying customer.",
+    "hero": {
+      "eyebrow": "Meta Ads Management",
+      "headline": "Meta Ads Expert for Ecommerce Sales and Lead Generation",
+      "highlight": "",
+      "intro": "I'm Umer Iftikhar, a Meta ads expert based in Karachi, Pakistan. I plan, launch and manage Facebook and Instagram ad campaigns for ecommerce brands that need online sales and for service businesses that need qualified leads."
     },
-    outcomes: ["Lower cost per lead", "Scalable ROAS", "Reliable conversion data"],
-    problems: [
-      {
-        title: "Rising costs, flat results",
-        text: "CPMs go up every quarter while leads and sales stay the same. Boosting posts and broad audiences burn budget without a plan to improve efficiency.",
-      },
-      {
-        title: "Tracking you can't trust",
-        text: "iOS privacy changes broke browser-only Pixel setups. Without Conversions API and clean events, the algorithm optimises for the wrong people.",
-      },
-      {
-        title: "Creative fatigue",
-        text: "The same three ads run for months. Frequency climbs, click-through rate falls and nobody knows which angle actually sells.",
-      },
-      {
-        title: "No clear funnel",
-        text: "Cold audiences get the same message as warm prospects. There's no structure for prospecting, retargeting and retention, so money leaks at every stage.",
-      },
+    "outcomes": [
+      "Campaigns built around your sales or lead goal",
+      "Tracking checked before budget is scaled",
+      "Clear reports on spend, results and cost per result"
     ],
-    solution: {
-      intro:
-        "I treat Meta Ads as a system, not a set of ads. Measurement comes first, then account structure, then a disciplined creative testing engine that finds winners and scales them without resetting learning.",
-      pillars: [
+    "problems": [
+      {
+        "title": "Spend without a clear return",
+        "text": "Budget goes out every day, but sales or enquiries rise and fall for no obvious reason. Boosted posts and broad audiences make it hard to see what is working."
+      },
+      {
+        "title": "Leads that don't become customers",
+        "text": "Cheap form fills look good in Ads Manager, but your team spends hours chasing people who never intended to buy or book."
+      },
+      {
+        "title": "Ads that have stopped working",
+        "text": "The same few ads run for months. Frequency climbs, click-through rate falls, and there is no plan for what to test next."
+      },
+      {
+        "title": "Tracking you can't rely on",
+        "text": "Purchases or leads are missing or double-counted, so Meta optimises toward the wrong people and reports don't match your actual sales."
+      }
+    ],
+    "solution": {
+      "intro": "As an independent Meta ads specialist, I run your campaigns personally, from the first audit to week-to-week optimisation. My Facebook ads management services cover both Facebook and Instagram placements, for online sales and for lead generation.",
+      "pillars": [
         {
-          title: "Measurement foundation",
-          text: "Pixel and Conversions API with event deduplication, prioritised events and value tracking, so every optimisation decision is based on real outcomes.",
+          "title": "Audit and planning",
+          "text": "I review account history, campaign structure, audiences and tracking, then agree goals, a target cost per result and a campaign plan for your offer."
         },
         {
-          title: "Full-funnel structure",
-          text: "Separate prospecting, retargeting and retention campaigns with messaging matched to intent, and budgets weighted by where profit actually comes from.",
+          "title": "Campaign setup and management",
+          "text": "I build and run prospecting and retargeting campaigns across Facebook and Instagram, monitor budgets, and adjust audiences and spend as results come in."
         },
         {
-          title: "Creative testing engine",
-          text: "Hooks, formats and offers tested in controlled batches. Winners get scaled, losers get cut quickly, and every test feeds the next brief.",
+          "title": "Creative testing strategy",
+          "text": "I plan which angles, hooks, formats and offers to test, write ad copy and creative briefs, and use results to decide what to make next."
         },
         {
-          title: "Profit-led scaling",
-          text: "Budgets scale against target CPA and ROAS, not vanity metrics. Scaling is gradual and deliberate so performance holds as spend grows.",
-        },
-      ],
+          "title": "Tracking and reporting",
+          "text": "I review or set up the Meta Pixel and Conversions API, check that key events fire correctly, and report on spend, results and cost per result."
+        }
+      ]
     },
-    process: [
-      { title: "Account & tracking audit", text: "Review account history, audience overlap, creative performance, Pixel health and attribution settings to find where budget is leaking." },
-      { title: "Strategy & offer mapping", text: "Define target customers, offers, funnel stages and KPIs. Agree on the CPA or ROAS that makes the campaign profitable for your business." },
-      { title: "Build & launch", text: "Set up Conversions API, custom audiences, campaign architecture and the first round of creative variations built around distinct angles." },
-      { title: "Test & optimise", text: "Weekly analysis of hooks, placements, audiences and landing page behaviour. Cut what doesn't work and double down on what does." },
-      { title: "Scale & report", text: "Increase spend on proven winners, expand into lookalikes and new creative, and share clear reports on revenue, leads and cost." },
+    "process": [
+      {
+        "title": "Account and tracking review",
+        "text": "I look at past campaigns, audiences, creative results, Pixel and Conversions API health and attribution settings to see where budget is being lost."
+      },
+      {
+        "title": "Goals and campaign plan",
+        "text": "We agree the main goal (purchases, leads or booked calls), the cost per result your margins can support, and the campaign structure to test first."
+      },
+      {
+        "title": "Setup and launch",
+        "text": "I fix or set up tracking, build audiences and campaigns, and launch the first round of ads built around distinct creative angles."
+      },
+      {
+        "title": "Test and optimise",
+        "text": "Each week I review results by campaign, audience, placement and creative, pause what isn't working and move budget toward what is."
+      },
+      {
+        "title": "Report and plan",
+        "text": "You get clear reports on spend, results and cost per result, with notes on what I changed and what I plan to test next."
+      }
     ],
-    tools: [
-      { title: "Meta Ads Manager", text: "Campaign architecture, Advantage+ and manual setups" },
-      { title: "Meta Pixel", text: "Browser-side event tracking and custom conversions" },
-      { title: "Conversions API", text: "Server-side events with deduplication" },
-      { title: "Events Manager", text: "Event quality, diagnostics and prioritisation" },
-      { title: "GA4", text: "Cross-channel attribution and on-site behaviour" },
-      { title: "Google Tag Manager", text: "Clean, maintainable tag deployment" },
+    "tools": [
+      {
+        "title": "Meta Ads Manager",
+        "text": "Campaign setup, Advantage+ and manual campaigns"
+      },
+      {
+        "title": "Meta Pixel",
+        "text": "Browser-side events and custom conversions"
+      },
+      {
+        "title": "Conversions API",
+        "text": "Server-side events with deduplication"
+      },
+      {
+        "title": "Events Manager",
+        "text": "Event checks, diagnostics and prioritisation"
+      },
+      {
+        "title": "GA4",
+        "text": "On-site behaviour and cross-channel comparison"
+      },
+      {
+        "title": "Google Tag Manager",
+        "text": "Clean, maintainable tag deployment"
+      }
     ],
-    benefits: [
-      { title: "Qualified leads, not just clicks", text: "Campaigns optimise for the events that matter to revenue: purchases, qualified leads and booked calls." },
-      { title: "Predictable acquisition cost", text: "Structured testing keeps CPA stable and tells you exactly what you can afford to spend to grow." },
-      { title: "Creative insight", text: "Every test reveals which messages, offers and formats resonate, useful far beyond your ads." },
-      { title: "Transparent reporting", text: "Clear reports tied to business numbers, so you always know what your ad spend is returning." },
+    "benefits": [
+      {
+        "title": "Ecommerce sales campaigns",
+        "text": "Prospecting and retargeting campaigns optimised for purchases, with purchase value tracked so spend can be judged against sales. Suitable for Shopify stores and other platforms."
+      },
+      {
+        "title": "Facebook lead generation services",
+        "text": "Campaigns using Instant Forms, messaging or your website forms, with questions and targeting set up to filter for people likely to buy or book."
+      },
+      {
+        "title": "Instagram ads management",
+        "text": "Ads planned for Feed, Stories and Reels, with copy and creative adapted to how people browse Instagram rather than resized Facebook ads."
+      },
+      {
+        "title": "Retargeting",
+        "text": "Follow-up ads for people who visited your site, viewed products, opened a lead form or engaged with your content, with messages matched to how far they got."
+      }
     ],
-    caseStudies: ["gul-khan", "petsinn", "building-block"],
-    related: ["google-ads", "analytics-tracking", "conversion-optimization"],
-    faqs: [
-      { q: "What budget do I need to start with Meta Ads?", a: "It depends on your cost per result and goals. As a rule, the daily budget should allow the algorithm to collect enough conversion events to learn. I'll recommend a starting budget in the strategy call based on your market and average order or lead value." },
-      { q: "How quickly will I see results?", a: "Early signals appear in the first one to two weeks. Stable, optimised performance usually takes four to eight weeks of testing, depending on budget, offer and tracking quality." },
-      { q: "Do you create the ad creative?", a: "I write ad copy, define creative angles and briefs, and can produce static and simple video creative. For heavier video production I work alongside your team or recommended creators." },
-      { q: "Why is Conversions API important?", a: "Browser tracking misses a significant share of conversions due to ad blockers and iOS privacy restrictions. Conversions API sends events from the server, which improves data quality and helps Meta optimise delivery." },
-      { q: "Will I own the ad account and data?", a: "Yes. Everything runs inside your Business Manager. You keep full ownership of the account, Pixel, audiences and creative." },
+    "caseStudies": [
+      "building-block",
+      "khatkaar",
+      "decordreams"
     ],
+    "related": [
+      "analytics-tracking",
+      "conversion-optimization",
+      "google-ads"
+    ],
+    "faqs": [
+      {
+        "q": "What does a Meta ads expert do?",
+        "a": "A Meta ads expert plans, runs and improves advertising on Facebook and Instagram so ad spend produces sales or leads. In my work that covers account audits, audience research, campaign setup, creative testing strategy, budget management, Pixel and Conversions API checks, and reporting."
+      },
+      {
+        "q": "Do you run Meta ads for both ecommerce and lead generation?",
+        "a": "Yes. Ecommerce campaigns optimise for purchases and are judged on purchase value and cost per purchase. Lead generation campaigns optimise for form submissions, messages or calls and are judged on cost per lead and how many leads become customers. The setup, tracking and creative differ for each."
+      },
+      {
+        "q": "Is your management fee separate from the ad spend?",
+        "a": "Yes. Your ad budget is paid directly to Meta through your own ad account. My management fee is a separate charge, which I quote after reviewing your account and goals."
+      },
+      {
+        "q": "How do you decide on an ad budget?",
+        "a": "I base the starting budget on your average order or lead value, the cost per result you can afford, and the number of conversions Meta needs to optimise delivery. I recommend a figure after the account review rather than applying a fixed minimum."
+      },
+      {
+        "q": "What will you need from me to get started?",
+        "a": "I need partner access to your ad account, Facebook Page, Instagram account and Pixel through your Meta business portfolio (Business Manager), plus website or store access if tracking needs work. I also need details of your offers, any existing creative and brand assets, and past results if you have them. The account, data and audiences stay yours."
+      },
+      {
+        "q": "Can you take over campaigns that are already running?",
+        "a": "Yes. I start the way a Facebook ads consultant would: by auditing the existing account, tracking and creative before changing anything. That way campaigns that are working aren't reset unnecessarily, and changes are made in a deliberate order."
+      },
+      {
+        "q": "How do you measure Meta Ads results?",
+        "a": "I measure results against your business goal: purchases, purchase value and return on ad spend for ecommerce, and leads, cost per lead and lead quality for lead generation. I compare Meta's figures with your store or CRM data, because Ads Manager does not capture every conversion."
+      },
+      {
+        "q": "How long before you can tell whether campaigns are working?",
+        "a": "It depends on how quickly campaigns collect enough conversions to judge. Budget, cost per result, the length of your sales cycle, tracking quality and how much needs rebuilding all affect it, so I agree a review point with you at the start rather than promising a fixed date."
+      }
+    ]
   },
   {
     slug: "google-ads",

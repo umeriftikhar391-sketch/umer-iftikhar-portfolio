@@ -12,12 +12,14 @@ const nextSteps = [
 
 export default function CtaSection({
   source,
+  steps = nextSteps,
   defaultService,
   eyebrow = "Start a project",
   title = "Let's build your next growth system.",
   intro = "Tell me about your business and goals. I'll come back with honest recommendations on where the biggest opportunities are, whether we end up working together or not.",
 }: {
   source: string;
+  steps?: string[];
   defaultService?: string;
   eyebrow?: string;
   title?: string;
@@ -36,7 +38,7 @@ export default function CtaSection({
 
           <h3 className="mt-10 text-sm font-semibold uppercase tracking-[0.2em] text-white">What happens next</h3>
           <ul className="mt-5 space-y-4">
-            {nextSteps.map((step) => (
+            {steps.map((step) => (
               <li key={step} className="flex gap-3 text-gray-300">
                 <Check aria-hidden className="mt-1 h-4 w-4 shrink-0 text-red-500" />
                 {step}

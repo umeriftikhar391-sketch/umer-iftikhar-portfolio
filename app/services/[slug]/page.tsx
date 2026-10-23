@@ -1,3 +1,4 @@
+import MetaAdsPage from "@/components/services/MetaAdsPage";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, Check } from "lucide-react";
@@ -40,6 +41,8 @@ export default async function ServicePage(props: PageProps<"/services/[slug]">) 
   const { slug } = await props.params;
   const service = getService(slug);
   if (!service) notFound();
+
+  if (service.slug === "meta-ads") return <MetaAdsPage service={service} />;
 
   const studies = service.caseStudies.map(getCaseStudy).filter((c) => c !== undefined);
   const related = service.related.map(getService).filter((s) => s !== undefined);
