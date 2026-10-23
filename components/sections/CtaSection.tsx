@@ -1,6 +1,7 @@
 import { Check, Mail, MessageCircle } from "lucide-react";
 import Reveal from "@/components/Reveal";
-import LeadForm from "@/components/forms/LeadForm";
+import dynamic from "next/dynamic";
+const LeadForm = dynamic(() => import("@/components/forms/LeadForm"));
 import { siteConfig, whatsappLink } from "@/lib/site";
 
 const nextSteps = [

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import CountUp from "react-countup";
+import { useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import { siteConfig } from "@/lib/site";
 
@@ -41,17 +41,34 @@ export default function Results() {
 
 function ResultCard({ item, index }: { item: Stat; index: number }) {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.4 });
+  const numberRef = useRef<HTMLSpanElement>(null);
+  useEffect(() => {
+    const element = numberRef.current;
+    if (!inView || !element || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let frame: number;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const progress = Math.min((now - start) / 2000, 1);
+      element.textContent = Math.round(item.value * progress).toLocaleString("en-US");
+      if (progress < 1) frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => {
+      cancelAnimationFrame(frame);
+      element.textContent = item.value.toLocaleString("en-US");
+    };
+  }, [inView, item.value]);
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 40 }}
+      initial={false}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       className="rounded-3xl border border-white/10 bg-white/[0.04] p-8 backdrop-blur-xl transition hover:border-red-500/40"
     >
       <p className="text-5xl font-bold text-red-500">
-        {inView ? <CountUp end={item.value} duration={2} separator="," /> : 0}
-        {item.suffix}
+        <span className="sr-only">{item.value.toLocaleString("en-US")}{item.suffix}</span>
+        <span aria-hidden="true"><span ref={numberRef}>{item.value.toLocaleString("en-US")}</span>{item.suffix}</span>
       </p>
       <h3 className="mt-6 text-xl font-bold text-white">{item.label}</h3>
       <p className="mt-4 leading-7 text-gray-400">{descriptions[item.label]}</p>

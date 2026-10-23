@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter_Tight } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 import SmoothScroll from "@/components/SmoothScroll";
@@ -7,18 +7,20 @@ import Background from "@/components/Background";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
-import PageLoader from "@/components/PageLoader";
 import AssistantWidget from "@/components/AssistantWidget";
 import Analytics from "@/components/analytics/Analytics";
 import JsonLd from "@/components/seo/JsonLd";
 import { siteConfig, GTM_ID } from "@/lib/site";
 import { personSchema, professionalServiceSchema, websiteSchema } from "@/lib/schema";
 
-const interTight = Inter_Tight({
-  subsets: ["latin"],
+const interTight = localFont({
+  src: "./fonts/inter-tight-latin-variable.woff2",
+  weight: "100 900",
   display: "swap",
   variable: "--font-inter-tight",
 });
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -27,10 +29,8 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  keywords: [...siteConfig.keywords],
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
   creator: siteConfig.name,
-  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -80,7 +80,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 
         <JsonLd data={[personSchema(), professionalServiceSchema(), websiteSchema()]} />
         <Analytics />
-        <PageLoader />
         <Background />
         <SmoothScroll />
         <CustomCursor />

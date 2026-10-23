@@ -1,11 +1,15 @@
+import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import Hero from "@/components/Hero";
 import Clients from "@/components/Clients";
 import Services from "@/components/Services";
 import CaseStudies from "@/components/CaseStudies";
-import Stack from "@/components/Stack";
-import Results from "@/components/Results";
+const Stack = dynamic(() => import("@/components/Stack"));
+const Results = dynamic(() => import("@/components/Results"));
 import About from "@/components/About";
 import CtaSection from "@/components/sections/CtaSection";
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 export default function Home() {
   return (

@@ -1,6 +1,9 @@
 import Button from "@/components/ui/Button";
 
-export const metadata = { title: "Page Not Found" };
+export const metadata = {
+  title: "Page Not Found",
+  robots: { index: false, follow: true, googleBot: { index: false, follow: true } },
+};
 
 export default function NotFound() {
   return (

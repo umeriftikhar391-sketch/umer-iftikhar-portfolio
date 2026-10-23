@@ -14,8 +14,8 @@ export function personSchema() {
     name: siteConfig.name,
     jobTitle: siteConfig.role,
     url: siteConfig.url,
-    email: `mailto:${siteConfig.email}`,
-    telephone: siteConfig.phone,
+    email: siteConfig.email,
+    telephone: siteConfig.telephone,
     address: { "@type": "PostalAddress", addressCountry: "PK" },
     sameAs: Object.values(siteConfig.socials),
     knowsAbout: [...services.map((s) => s.name), "Performance Marketing", "Shopify", "Next.js", "GA4", "Google Tag Manager"],
@@ -32,7 +32,7 @@ export function professionalServiceSchema() {
     url: siteConfig.url,
     image: absoluteUrl("/opengraph-image"),
     email: siteConfig.email,
-    telephone: siteConfig.phone,
+    telephone: siteConfig.telephone,
     founder: { "@id": personId },
     address: { "@type": "PostalAddress", addressCountry: "PK" },
     areaServed: "Worldwide",
@@ -110,5 +110,15 @@ export function caseStudySchema(study: CaseStudy) {
     publisher: { "@id": personId },
     about: study.client,
     keywords: study.channels.join(", "),
+  };
+}
+
+export function profilePageSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": absoluteUrl("/about#profile"),
+    url: absoluteUrl("/about"),
+    mainEntity: { "@id": personId },
   };
 }

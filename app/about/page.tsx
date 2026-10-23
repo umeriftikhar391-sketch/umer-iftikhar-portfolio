@@ -1,3 +1,5 @@
+import JsonLd from "@/components/seo/JsonLd";
+import { profilePageSchema } from "@/lib/schema";
 import Link from "next/link";
 import PageHero from "@/components/sections/PageHero";
 import Section from "@/components/sections/Section";
@@ -35,6 +37,7 @@ const approach = [
 export default function AboutPage() {
   return (
     <>
+      <JsonLd data={profilePageSchema()} />
       <PageHero
         eyebrow="About Me"
         title="I build growth systems that turn attention into"

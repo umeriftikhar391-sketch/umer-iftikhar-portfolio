@@ -22,14 +22,13 @@ export default function Hero() {
     <section id="home" className="relative flex min-h-screen items-center overflow-hidden px-5 sm:px-6">
       <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 pb-20 pt-36 lg:grid-cols-[1.25fr_1fr] lg:gap-16 lg:pt-32">
         <div>
-          <motion.h1 variants={textReveal} initial="hidden" animate="show">
-            <span className="mb-6 block text-xs font-semibold uppercase tracking-[0.3em] text-red-500 sm:mb-8 sm:text-sm">
-              Performance Marketing Specialist &amp; Web Developer
-            </span>
+          <motion.h1 variants={textReveal} initial={false} animate="show">
             <span className="block text-6xl font-bold leading-[0.85] tracking-tight text-white sm:text-7xl md:text-[110px]">
-              Umer
-              <br />
+              Umer{" "}<br />
               <span className="text-red-500">Iftikhar</span>
+            </span>{" "}
+            <span className="mt-6 block text-xs font-semibold uppercase tracking-[0.3em] text-red-500 sm:mt-8 sm:text-sm">
+              Performance Marketing Specialist &amp; Web Developer
             </span>
           </motion.h1>
 

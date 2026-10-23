@@ -10,11 +10,10 @@ type PageMeta = {
   absoluteTitle?: boolean;
 };
 
-export function buildMetadata({ title, description, path, keywords, type = "website", absoluteTitle }: PageMeta): Metadata {
+export function buildMetadata({ title, description, path, type = "website", absoluteTitle }: PageMeta): Metadata {
   return {
     title: absoluteTitle ? { absolute: title } : title,
     description,
-    keywords: keywords ?? [...siteConfig.keywords],
     alternates: { canonical: path },
     openGraph: {
       type,

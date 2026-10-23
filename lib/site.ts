@@ -16,9 +16,11 @@ export const siteConfig = {
   ],
   email: "umer.iftikhar391@gmail.com",
   phone: "+92 314 0209996",
+  telephone: "+923140209996",
   whatsappNumber: "923140209996",
   location: "Pakistan",
   socials: {
+    github: "https://github.com/umeriftikhar391-sketch",
     linkedin: "https://www.linkedin.com/in/umer-iftikhar02/",
     instagram: "https://www.instagram.com/umer.iftikhardigi",
     facebook: "https://www.facebook.com/profile.php?id=61591126276980",
