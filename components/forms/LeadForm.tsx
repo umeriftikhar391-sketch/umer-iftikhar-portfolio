@@ -223,7 +223,7 @@ export default function LeadForm({
                 </>
               )}
             </button>
-            <p className="text-center text-xs text-gray-500">No spam. Your details are only used to reply to your enquiry.</p>
+            <p className="text-center text-xs text-gray-500">No spam. Your details are only used to reply to your inquiry.</p>
           </motion.form>
         )}
       </AnimatePresence>

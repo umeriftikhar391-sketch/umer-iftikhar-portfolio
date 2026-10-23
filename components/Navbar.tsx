@@ -7,7 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Menu, X, ArrowUpRight } from "lucide-react";
 import MagneticButton from "@/components/MagneticButton";
 import { mainNav, whatsappLink } from "@/lib/site";
-import { services } from "@/lib/services";
+import { services } from "@/lib/service-directory";
 
 export default function Navbar() {
   const pathname = usePathname();

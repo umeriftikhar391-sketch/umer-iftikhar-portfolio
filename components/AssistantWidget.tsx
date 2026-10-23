@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ChevronRight, FileText, Mail, MessageCircle, Sparkles, X } from "lucide-react";
 import LeadForm from "@/components/forms/LeadForm";
 import { siteConfig, whatsappLink } from "@/lib/site";
-import { services } from "@/lib/services";
+import { services } from "@/lib/service-directory";
 import { track } from "@/lib/analytics";
 
 type View = "home" | "form";

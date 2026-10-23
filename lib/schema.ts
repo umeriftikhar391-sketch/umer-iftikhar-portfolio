@@ -1,3 +1,4 @@
+import { servicePageCopy } from "@/lib/service-copy";
 import { siteConfig, absoluteUrl } from "@/lib/site";
 import { services, type Service, type Faq } from "@/lib/services";
 import type { CaseStudy } from "@/lib/case-studies";
@@ -42,7 +43,7 @@ export function professionalServiceSchema() {
       name: "Services",
       itemListElement: services.map((s) => ({
         "@type": "Offer",
-        itemOffered: { "@type": "Service", name: s.name, url: absoluteUrl(`/services/${s.slug}`) },
+        itemOffered: { "@type": "Service", "@id": absoluteUrl(`/services/${s.slug}#service`), name: servicePageCopy[s.slug].schemaName, url: absoluteUrl(`/services/${s.slug}`) },
       })),
     },
   };
@@ -65,9 +66,9 @@ export function serviceSchema(service: Service) {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: service.name,
+    name: servicePageCopy[service.slug].schemaName,
     "@id": absoluteUrl(`/services/${service.slug}#service`),
-    serviceType: service.slug === "meta-ads" ? "Meta advertising management" : service.name,
+    serviceType: servicePageCopy[service.slug].serviceType,
     description: service.seo.description,
     url: absoluteUrl(`/services/${service.slug}`),
     provider: { "@id": businessId },
@@ -75,10 +76,11 @@ export function serviceSchema(service: Service) {
   };
 }
 
-export function faqSchema(faqs: Faq[]) {
+export function faqSchema(faqs: Faq[], path?: string) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    ...(path ? { "@id": absoluteUrl(`${path}#faq`), isPartOf: { "@id": absoluteUrl(`${path}#webpage`) } } : {}),
     mainEntity: faqs.map((f) => ({
       "@type": "Question",
       name: f.q,
@@ -91,6 +93,7 @@ export function breadcrumbSchema(items: { name: string; path: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    "@id": absoluteUrl(`${items.at(-1)?.path ?? "/"}#breadcrumb`),
     itemListElement: items.map((item, i) => ({
       "@type": "ListItem",
       position: i + 1,
@@ -121,5 +124,16 @@ export function profilePageSchema() {
     "@id": absoluteUrl("/about#profile"),
     url: absoluteUrl("/about"),
     mainEntity: { "@id": personId },
+  };
+}
+
+export function serviceWebPageSchema(service: Service) {
+  const path = `/services/${service.slug}`;
+  return {
+    "@context": "https://schema.org", "@type": "WebPage",
+    "@id": absoluteUrl(`${path}#webpage`), url: absoluteUrl(path),
+    name: service.seo.title, description: service.seo.description, inLanguage: "en",
+    isPartOf: { "@id": websiteId }, about: { "@id": absoluteUrl(`${path}#service`) },
+    breadcrumb: { "@id": absoluteUrl(`${path}#breadcrumb`) },
   };
 }

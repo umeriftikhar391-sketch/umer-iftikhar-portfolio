@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { services } from "@/lib/services";
+import { services } from "@/lib/service-directory";
 
 export default function Services() {
   return (

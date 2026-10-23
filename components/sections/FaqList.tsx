@@ -3,10 +3,10 @@ import JsonLd from "@/components/seo/JsonLd";
 import { faqSchema } from "@/lib/schema";
 import type { Faq } from "@/lib/services";
 
-export default function FaqList({ faqs }: { faqs: Faq[] }) {
+export default function FaqList({ faqs, path, renderText = text => text }: { faqs: Faq[]; path?: string; renderText?: (text: string) => React.ReactNode }) {
   return (
     <>
-      <JsonLd data={faqSchema(faqs)} />
+      <JsonLd data={faqSchema(faqs, path)} />
       <div className="mt-12 divide-y divide-white/10 border-y border-white/10">
         {faqs.map((faq) => (
           <details key={faq.q} className="group py-6">
@@ -14,7 +14,7 @@ export default function FaqList({ faqs }: { faqs: Faq[] }) {
               {faq.q}
               <Plus aria-hidden className="mt-1 h-5 w-5 shrink-0 text-red-500 transition-transform duration-300 group-open:rotate-45" />
             </summary>
-            <p className="mt-4 max-w-3xl leading-8 text-gray-400">{faq.a}</p>
+            <p className="mt-4 max-w-3xl leading-8 text-gray-400">{renderText(faq.a)}</p>
           </details>
         ))}
       </div>

@@ -1,4 +1,4 @@
-import { serviceOptions } from "@/lib/services";
+import { serviceOptions } from "@/lib/service-directory";
 
 export const leadServiceOptions = [...serviceOptions, "Not sure yet"];
 

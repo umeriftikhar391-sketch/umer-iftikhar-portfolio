@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { siteConfig, whatsappLink } from "@/lib/site";
-import { services } from "@/lib/services";
+import { services } from "@/lib/service-directory";
 import { caseStudies } from "@/lib/case-studies";
 
 const socialLinks = [
