@@ -53,7 +53,7 @@ export default function Navbar() {
             Umer<span className="text-red-500">.</span>
           </Link>
 
-          <ul className="hidden items-center gap-8 text-sm md:flex">
+          <ul className="hidden items-center gap-4 text-sm md:flex lg:gap-8">
             {mainNav.map((link) =>
               link.href === "/services" ? (
                 <li key={link.href} className="group relative">

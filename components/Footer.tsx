@@ -87,6 +87,7 @@ export default function Footer() {
         <div className="flex flex-col justify-between gap-4 border-t border-white/10 pt-8 text-sm text-gray-500 sm:flex-row">
           <p>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
           <nav aria-label="Footer" className="flex gap-6">
+            <Link href="/blog" className="hover:text-white">Blog</Link>
             <Link href="/about" className="hover:text-white">About</Link>
             <Link href="/services" className="hover:text-white">Services</Link>
             <Link href="/contact" className="hover:text-white">Contact</Link>

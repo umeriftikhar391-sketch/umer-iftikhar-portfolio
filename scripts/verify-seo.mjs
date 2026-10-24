@@ -9,9 +9,10 @@ const get = async path => {
 const { response: sitemap, text: xml } = await get('/sitemap.xml');
 assert.equal(sitemap.status, 200);
 assert.doesNotMatch(xml, /<priority>|<changefreq>/);
-const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
+const entries = [...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)].map(m => m[1]).filter(entry => !new URL(entry.match(/<loc>([^<]+)<\/loc>/)[1]).pathname.startsWith("/blog"));
+const urls = entries.map(entry => entry.match(/<loc>([^<]+)<\/loc>/)[1]);
 assert.equal(urls.length, 20);
-const modified = [...xml.matchAll(/<lastmod>([^<]+)<\/lastmod>/g)].map(m => m[1]);
+const modified = [...entries.join('').matchAll(/<lastmod>([^<]+)<\/lastmod>/g)].map(m => m[1]);
 assert.equal(modified.length, urls.length);
 for (const date of modified) assert.ok(Number.isFinite(Date.parse(date)));
 const jsonLd = html => [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]

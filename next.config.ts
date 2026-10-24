@@ -1,6 +1,10 @@
+import { wordpressUrl } from "./lib/wordpress/config";
 import type { NextConfig } from "next";
 
+const media = wordpressUrl();
+
 const nextConfig: NextConfig = {
+  images: { remotePatterns: media ? [{ protocol: media.protocol.slice(0, -1) as "http" | "https", hostname: media.hostname, port: media.port, pathname: "/wp-content/uploads/**" }] : [] },
   poweredByHeader: false,
   async redirects() {
     return [{

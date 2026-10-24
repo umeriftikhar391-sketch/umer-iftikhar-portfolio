@@ -51,3 +51,7 @@ If `NEXT_PUBLIC_META_PIXEL_ID` is set, the Pixel loads directly and `Lead` / `Co
 2. Build command: `npm run build` · Start command: `npm start`.
 3. Add environment variables from `.env.example` in the Hostinger panel (at minimum `EMAIL_USER` and `EMAIL_PASSWORD`, a Gmail App Password).
 4. Redeploy after changing any `NEXT_PUBLIC_*` variable (they are embedded at build time).
+
+## Headless WordPress blog
+
+See [WordPress blog setup and publishing](docs/wordpress-blog.md) for environment variables, WordPress/Hostinger setup, daily publishing, caching, test commands and live SEO checks.
