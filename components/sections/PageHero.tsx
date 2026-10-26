@@ -26,19 +26,19 @@ export default function PageHero({
   children?: React.ReactNode;
 }) {
   return (
-    <section className="relative px-5 pb-20 pt-36 sm:px-6 sm:pt-44 lg:pb-28">
+    <section className="relative px-5 pb-16 pt-32 sm:px-6 sm:pb-20 sm:pt-40 lg:pb-24">
       <div className="mx-auto max-w-7xl">
         {breadcrumbs && <Breadcrumbs items={breadcrumbs} />}
         <div className={`mt-8 grid gap-12 ${children ? "lg:grid-cols-[1.35fr_1fr] lg:items-end" : ""}`}>
           <Reveal>
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-red-500 sm:text-sm">{eyebrow}</p>
-            <h1 className="mt-6 text-balance text-5xl font-bold leading-[0.98] tracking-tight text-white sm:text-6xl lg:text-7xl">
-              {title} {highlight && <span className="text-red-500">{highlight}</span>}
+            <p className="eyebrow">{eyebrow}</p>
+            <h1 className="mt-6 text-balance text-[clamp(2.5rem,6.5vw,4.75rem)] font-bold leading-[1.02] tracking-[-0.035em] text-ink">
+              {title} {highlight && <span className="text-brand">{highlight}</span>}
             </h1>
-            <p className="mt-8 max-w-2xl text-pretty text-lg leading-8 text-gray-400">{intro}</p>
-            {extraIntro && <p className="mt-5 max-w-2xl text-pretty text-lg leading-8 text-gray-400">{extraIntro}</p>}
+            <p className="mt-7 max-w-2xl text-pretty text-lg leading-8 text-body sm:text-xl sm:leading-9">{intro}</p>
+            {extraIntro && <p className="mt-5 max-w-2xl text-pretty text-lg leading-8 text-body">{extraIntro}</p>}
             {(primary || secondary) && (
-              <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:gap-4">
                 {primary && (
                   <Button href={primary.href} cta={primary.cta}>
                     {primary.label}

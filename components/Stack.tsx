@@ -113,60 +113,27 @@ export default function Stack(){
 return (
 
 <section
-className="
-bg-black
-px-6
-py-32
-relative
-overflow-hidden
-"
+className="relative overflow-hidden px-5 py-24 sm:px-6 lg:py-32"
 >
 
 
-{/* Background Glow */}
-
-<div
-className="
-absolute
-top-0
-right-0
-w-[500px]
-h-[500px]
-bg-red-600/10
-blur-[150px]
-rounded-full
-"
-/>
 
 
 
 <div
-className="
-max-w-7xl
-mx-auto
-relative
-z-10
-"
+className="max-w-7xl mx-auto relative z-10"
 >
 
 
 {/* Heading */}
 
 <div
-className="
-text-center
-mb-20
-"
+className="mx-auto mb-16 max-w-3xl text-center"
 >
 
 
 <p
-className="
-text-red-500
-uppercase
-tracking-[6px]
-text-sm
-"
+className="eyebrow"
 >
 
 Tools & Technology
@@ -176,18 +143,12 @@ Tools & Technology
 
 
 <h2
-className="
-text-white
-text-5xl
-md:text-6xl
-font-bold
-mt-5
-"
+className="mt-5 text-[clamp(2.125rem,5vw,3.5rem)] font-bold leading-[1.08] tracking-[-0.025em] text-ink"
 >
 
 My Growth
 
-<span className="text-red-500">
+<span className="ml-[0.25em] text-brand">
  Stack
 </span>
 
@@ -196,13 +157,7 @@ My Growth
 
 
 <p
-className="
-text-gray-400
-max-w-2xl
-mx-auto
-mt-6
-text-lg
-"
+className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-body"
 >
 
 The platforms, technologies and systems I use to build, track and scale digital growth.
@@ -220,13 +175,7 @@ The platforms, technologies and systems I use to build, track and scale digital 
 
 
 <div
-className="
-grid
-grid-cols-1
-sm:grid-cols-2
-lg:grid-cols-4
-gap-8
-"
+className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"
 >
 
 
@@ -267,81 +216,28 @@ delay:index*0.05
 }}
 
 
-whileHover={{
-y:-12
-}}
 
-
-
-className="
-group
-relative
-rounded-3xl
-border
-border-white/10
-bg-white/[0.04]
-backdrop-blur-xl
-p-8
-min-h-[240px]
-overflow-hidden
-transition-all
-duration-500
-hover:border-red-500/50
-"
+className="group relative h-full overflow-hidden rounded-2xl border border-line bg-white p-7 shadow-card transition duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-lift"
 
 >
 
 
-{/* Hover Glow */}
-
-<div
-className="
-absolute
-inset-0
-bg-gradient-to-br
-from-red-500/0
-via-red-500/0
-to-red-500/20
-opacity-0
-group-hover:opacity-100
-transition
-duration-500
-"
-/>
 
 
 
 <div
-className="
-relative
-z-10
-"
+className="relative z-10"
 >
 
 
 <div
-className="
-w-14
-h-14
-rounded-2xl
-bg-red-500/10
-flex
-items-center
-justify-center
-mb-7
-group-hover:bg-red-500/20
-transition
-"
+className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-rose"
 >
 
 
 <Icon
 
-className="
-text-red-500
-w-7
-h-7
-"
+className="h-6 w-6 text-brand-hover"
 
 />
 
@@ -353,11 +249,7 @@ h-7
 
 
 <h3
-className="
-text-white
-font-bold
-text-xl
-"
+className="text-lg font-bold tracking-tight text-ink"
 >
 
 {item.name}
@@ -368,12 +260,7 @@ text-xl
 
 
 <p
-className="
-text-gray-400
-text-sm
-mt-4
-leading-7
-"
+className="mt-3 text-[0.9375rem] leading-7 text-body"
 >
 
 {item.description}

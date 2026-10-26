@@ -11,8 +11,8 @@ import { serviceSchema, serviceWebPageSchema } from "@/lib/schema";
 import type { Service } from "@/lib/services";
 import type { ServiceCopy, CopySection, CopyNode } from "@/lib/service-copy";
 
-const cardClass = "min-w-0 rounded-3xl border border-white/10 bg-white/[0.03] p-7 sm:p-8";
-const linkClass = "text-red-400 underline decoration-red-500/40 underline-offset-4 hover:text-red-300";
+const cardClass = "min-w-0 rounded-2xl border border-line bg-white p-7 shadow-card sm:p-8";
+const linkClass = "font-medium text-brand-hover underline decoration-brand/40 underline-offset-4 transition-colors hover:text-ink hover:decoration-brand";
 
 /** Plain-text copy stays plain text; only the approved internal anchors become links. */
 function LinkedCopy({ text, links }: { text: string; links: ServiceCopy["links"] }): React.ReactNode {
@@ -32,20 +32,20 @@ function Blocks({ nodes, copy, numbered = false }: { nodes: CopyNode[]; copy: Se
       const group: CopyNode[] = [node];
       while (nodes[i + 1]?.kind === node.kind) group.push(nodes[++i]);
       if (node.kind === "bullet") {
-        output.push(<ul key={i} className="mt-6 grid list-disc gap-x-10 gap-y-3 pl-5 leading-7 text-gray-300 marker:text-red-500 md:grid-cols-2">{group.map(item => <li key={item.text}>{rich(item.text)}</li>)}</ul>);
+        output.push(<ul key={i} className="mt-6 grid list-disc gap-x-10 gap-y-3 pl-5 leading-7 text-body marker:text-brand md:grid-cols-2">{group.map(item => <li key={item.text}>{rich(item.text)}</li>)}</ul>);
       } else {
         output.push(<div key={i} className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">{group.map((item, index) => <article key={item.title} className={cardClass}>
-          {numbered && <span className="font-mono text-sm text-red-500">{String(index + 1).padStart(2, "0")}</span>}
-          <h3 className={`${numbered ? "mt-4 " : ""}text-xl font-bold text-white`}>{rich(item.title ?? "")}</h3>
-          <p className="mt-3 leading-7 text-gray-400">{rich(item.text)}</p>
+          {numbered && <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-rose font-mono text-sm font-semibold text-brand-hover">{String(index + 1).padStart(2, "0")}</span>}
+          <h3 className={`${numbered ? "mt-4 " : ""}text-xl font-bold tracking-tight text-ink`}>{rich(item.title ?? "")}</h3>
+          <p className="mt-3 leading-7 text-body">{rich(item.text)}</p>
         </article>)}</div>);
       }
     } else if (node.kind === "heading") {
-      output.push(<h3 key={i} className="mt-12 text-2xl font-bold text-white">{node.text}</h3>);
+      output.push(<h3 key={i} className="mt-12 text-2xl font-bold tracking-tight text-ink">{node.text}</h3>);
     } else if (node.kind === "link") {
       output.push(<Link key={i} href={node.href!} className={`${linkClass} mt-6 inline-block`}>{node.text}</Link>);
     } else {
-      output.push(<p key={i} className="mt-6 max-w-4xl text-lg leading-8 text-gray-400">{rich(node.text)}</p>);
+      output.push(<p key={i} className="mt-6 max-w-4xl text-lg leading-8 text-body">{rich(node.text)}</p>);
     }
   }
   return <>{output}</>;
@@ -60,8 +60,8 @@ function Measurement({ section, copy }: { section: CopySection; copy: ServiceCop
     <Blocks nodes={section.nodes.slice(0, first)} copy={copy} />
     <div className="mt-12 grid gap-5 md:grid-cols-2">
       {[section.nodes.slice(first, second), section.nodes.slice(second, end)].map(column => <div key={column[0].text} className={cardClass}>
-        <h3 className="text-2xl font-bold text-white">{column[0].text}</h3>
-        <ul className="mt-5 list-disc space-y-3 pl-5 leading-7 text-gray-300 marker:text-red-500">{column.filter(node => node.kind === "bullet").map(node => <li key={node.text}>{node.text}</li>)}</ul>
+        <h3 className="text-2xl font-bold text-ink">{column[0].text}</h3>
+        <ul className="mt-5 list-disc space-y-3 pl-5 leading-7 text-body marker:text-brand">{column.filter(node => node.kind === "bullet").map(node => <li key={node.text}>{node.text}</li>)}</ul>
         {column.filter(node => node.kind === "link").map(node => <Link key={node.href} href={node.href!} className={`${linkClass} mt-6 inline-block`}>{node.text}</Link>)}
       </div>)}
     </div>
@@ -80,9 +80,9 @@ export default function ServiceContentPage({ service, copy }: { service: Service
       secondary={hero.secondary && { ...hero.secondary, cta: `service_${service.slug}_hero_secondary` }}
       breadcrumbs={[{ name: "Services", path: "/services" }, { name: service.name, path }]}
     >
-      <div className={cardClass}>
-        <p className="text-sm uppercase tracking-[0.2em] text-gray-400">What to expect</p>
-        <ul className="mt-5 list-disc space-y-4 pl-5 text-lg text-white marker:text-red-500">{hero.nodes.filter(n => n.kind === "bullet").map(n => <li key={n.text}>{n.text}</li>)}</ul>
+      <div className={`${cardClass} shadow-lift`}>
+        <p className="eyebrow">What to expect</p>
+        <ul className="mt-5 list-disc space-y-3 pl-5 text-lg leading-8 text-ink marker:text-brand">{hero.nodes.filter(n => n.kind === "bullet").map(n => <li key={n.text}>{n.text}</li>)}</ul>
       </div>
     </PageHero>
     {copy.sections.slice(1).map((section, index) => {

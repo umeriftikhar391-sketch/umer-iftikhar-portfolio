@@ -19,37 +19,37 @@ const chips = [
 
 export default function Hero() {
   return (
-    <section id="home" className="relative flex min-h-screen items-center overflow-hidden px-5 sm:px-6">
-      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 pb-20 pt-36 lg:grid-cols-[1.25fr_1fr] lg:gap-16 lg:pt-32">
+    <section id="home" className="relative flex items-center overflow-hidden px-5 sm:px-6 lg:min-h-[92vh]">
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-14 pb-16 pt-32 sm:pb-20 sm:pt-36 lg:grid-cols-[1.2fr_1fr] lg:gap-16 lg:pt-32">
         <div>
           <motion.h1 variants={textReveal} initial={false} animate="show">
-            <span className="block text-6xl font-bold leading-[0.85] tracking-tight text-white sm:text-7xl md:text-[110px]">
+            <span className="block text-[clamp(3.25rem,11vw,7rem)] font-bold leading-[0.9] tracking-[-0.035em] text-ink">
               Umer{" "}<br />
-              <span className="text-red-500">Iftikhar</span>
+              <span className="text-brand">Iftikhar</span>
             </span>{" "}
-            <span className="mt-6 block text-xs font-semibold uppercase tracking-[0.3em] text-red-500 sm:mt-8 sm:text-sm">
+            <span className="mt-7 flex items-center gap-3 text-base font-semibold tracking-normal text-body before:h-0.5 before:w-10 before:shrink-0 before:rounded-full before:bg-brand before:content-[''] sm:text-lg">
               Performance Marketing Specialist &amp; Web Developer
             </span>
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-8 max-w-xl text-pretty text-base leading-7 text-gray-400 sm:text-lg sm:leading-8"
+            className="mt-7 max-w-xl text-pretty text-lg leading-8 text-body"
           >
             I help ambitious brands turn ad spend into predictable revenue. Meta Ads, Google Ads, SEO and
-            high-converting websites, engineered as <span className="text-white">one growth system</span> and measured
+            high-converting websites, engineered as <span className="font-semibold text-ink">one growth system</span> and measured
             against the numbers that matter: leads, sales and return on ad spend.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="mt-10 flex flex-col gap-4 sm:flex-row"
+            className="mt-9 flex flex-col gap-3 sm:flex-row sm:gap-4"
           >
-            <MagneticButton href="/contact" cta="hero_book_call" className="px-8 py-4 text-base">
+            <MagneticButton href="/contact" cta="hero_book_call" className="min-h-12 px-6 py-3 text-base!">
               Book a Strategy Call
             </MagneticButton>
             <Button href="/case-studies" variant="secondary" cta="hero_view_work">
@@ -58,57 +58,55 @@ export default function Hero() {
           </motion.div>
 
           <motion.dl
-            initial={{ opacity: 0 }}
+            initial={false}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.9 }}
-            className="mt-12 grid grid-cols-2 gap-6 border-t border-white/10 pt-8 sm:mt-14 sm:grid-cols-4"
+            className="mt-12 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-line pt-8 sm:grid-cols-4"
           >
             {siteConfig.stats.map((s) => (
               <div key={s.label}>
                 <dt className="sr-only">{s.label}</dt>
-                <dd className="text-3xl font-bold text-white">
+                <dd className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
                   {s.value >= 1000 ? `${s.value / 1000}K` : s.value}
-                  <span className="text-red-500">{s.suffix}</span>
+                  <span className="text-brand">{s.suffix}</span>
                 </dd>
-                <dd className="mt-1 text-sm text-gray-500">{s.label}</dd>
+                <dd className="mt-1 text-sm text-body">{s.label}</dd>
               </div>
             ))}
           </motion.dl>
         </div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={false}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
           className="relative hidden justify-center overflow-visible lg:flex"
         >
-          <div className="w-[380px] max-w-full rounded-3xl border border-white/10 bg-white/[0.04] p-10 backdrop-blur-xl">
-            <p className="text-sm text-gray-400">Digital Growth System</p>
-            <p className="mt-6 text-5xl font-bold leading-tight text-white">
+          <div className="w-[380px] max-w-full rounded-3xl border border-line bg-white p-10 shadow-lift">
+            <p className="text-sm font-semibold text-brand-hover">Digital Growth System</p>
+            <p className="mt-6 text-5xl font-bold leading-[1.05] tracking-tight text-ink">
               Convert
               <br />
               Visitors
               <br />
               Into
               <br />
-              <span className="text-red-500">Customers</span>
+              <span className="text-brand">Customers</span>
             </p>
             <div className="mt-8 space-y-3">
               {["Attract", "Convert", "Measure", "Scale"].map((step, i) => (
-                <div key={step} className="flex items-center gap-3 text-sm text-gray-300">
-                  <span className="font-mono text-red-500">0{i + 1}</span>
-                  <span className="h-px flex-1 bg-white/10" />
+                <div key={step} className="flex items-center gap-3 text-sm text-body">
+                  <span className="font-mono text-brand-hover">0{i + 1}</span>
+                  <span className="h-px flex-1 bg-line" />
                   {step}
                 </div>
               ))}
             </div>
           </div>
-          {chips.map((chip, i) => (
+          {chips.map((chip) => (
             <motion.div
               key={chip.label}
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: i * 0.6 }}
-              className={`absolute rounded-full border border-white/20 bg-black/70 px-5 py-2 text-sm text-white backdrop-blur ${chip.className}`}
+              className={`absolute rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-ink shadow-card ${chip.className}`}
             >
               {chip.label}
             </motion.div>

@@ -66,28 +66,28 @@ export default async function CaseStudyPage(props: PageProps<"/case-studies/[slu
       <Section glow="right">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr]">
           <div>
-            <SectionHeading eyebrow="Client Overview" title={<>About <span className="text-red-500">{study.client}</span></>} />
-            <Reveal className="mt-8 space-y-6 text-lg leading-8 text-gray-400">
+            <SectionHeading eyebrow="Client Overview" title={<>About <span className="text-brand">{study.client}</span></>} />
+            <Reveal className="mt-8 space-y-6 text-lg leading-8 text-body">
               {study.overview.map((p) => (
                 <p key={p.slice(0, 32)}>{p}</p>
               ))}
             </Reveal>
           </div>
           <Reveal delay={0.1}>
-            <dl className="divide-y divide-white/10 rounded-3xl border border-white/10 bg-white/[0.04] p-8 backdrop-blur-xl">
+            <dl className="divide-y divide-line rounded-2xl border border-line bg-white p-8 shadow-lift">
               <div className="pb-5">
-                <dt className="text-xs uppercase tracking-widest text-gray-500">Industry</dt>
-                <dd className="mt-2 text-lg font-semibold text-white">{study.industry}</dd>
+                <dt className="text-sm font-semibold text-slate-500">Industry</dt>
+                <dd className="mt-2 text-lg font-semibold text-ink">{study.industry}</dd>
               </div>
               <div className="py-5">
-                <dt className="text-xs uppercase tracking-widest text-gray-500">Focus</dt>
-                <dd className="mt-2 text-lg font-semibold text-white">{study.category}</dd>
+                <dt className="text-sm font-semibold text-slate-500">Focus</dt>
+                <dd className="mt-2 text-lg font-semibold text-ink">{study.category}</dd>
               </div>
               <div className="pt-5">
-                <dt className="text-xs uppercase tracking-widest text-gray-500">Services</dt>
+                <dt className="text-sm font-semibold text-slate-500">Services</dt>
                 <dd className="mt-3 flex flex-wrap gap-2">
                   {services.map((s) => (
-                    <Link key={s.slug} href={`/services/${s.slug}`} className="rounded-full border border-white/15 px-3 py-1.5 text-sm text-gray-200 transition hover:border-red-500/60">
+                    <Link key={s.slug} href={`/services/${s.slug}`} className="inline-flex min-h-9 items-center rounded-full bg-blush px-3 text-sm font-medium text-ink transition-colors hover:bg-rose hover:text-brand-hover">
                       {s.name}
                     </Link>
                   ))}
@@ -101,13 +101,13 @@ export default async function CaseStudyPage(props: PageProps<"/case-studies/[slu
       {/* 2. Business challenge */}
       <Section>
         <div className="grid gap-12 lg:grid-cols-2">
-          <SectionHeading eyebrow="Business Challenge" title={<>The problem to <span className="text-red-500">solve</span></>} intro={study.challenge.intro} />
+          <SectionHeading eyebrow="Business Challenge" title={<>The problem to <span className="text-brand">solve</span></>} intro={study.challenge.intro} />
           <Reveal>
             <ul className="space-y-4">
               {study.challenge.points.map((point, i) => (
-                <li key={point} className="flex gap-5 rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-                  <span className="font-mono text-red-500">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="leading-7 text-gray-300">{point}</span>
+                <li key={point} className="flex gap-5 rounded-2xl border border-line bg-white p-5 shadow-card">
+                  <span className="font-mono font-semibold text-brand-hover">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="leading-7 text-body">{point}</span>
                 </li>
               ))}
             </ul>
@@ -117,24 +117,24 @@ export default async function CaseStudyPage(props: PageProps<"/case-studies/[slu
 
       {/* 3. Strategy */}
       <Section glow="left">
-        <SectionHeading eyebrow="Strategy" title={<>The <span className="text-red-500">plan</span></>} intro={study.strategy.intro} />
+        <SectionHeading eyebrow="Strategy" title={<>The <span className="text-brand">plan</span></>} intro={study.strategy.intro} />
         <ItemGrid items={study.strategy.points} numbered />
       </Section>
 
       {/* 4. Execution */}
       <Section>
         <div className="grid gap-12 lg:grid-cols-[1fr_1.3fr]">
-          <SectionHeading eyebrow="Execution" title={<>How it was <span className="text-red-500">delivered</span></>} intro="Step by step, from foundation to optimisation." />
+          <SectionHeading eyebrow="Execution" title={<>How it was <span className="text-brand">delivered</span></>} intro="Step by step, from foundation to optimisation." />
           <ProcessSteps steps={study.execution} />
         </div>
       </Section>
 
       {/* 5. Marketing channels */}
       <Section>
-        <SectionHeading eyebrow="Marketing Channels" title={<>Channels <span className="text-red-500">used</span></>} />
+        <SectionHeading eyebrow="Marketing Channels" title={<>Channels <span className="text-brand">used</span></>} />
         <div className="mt-10 flex flex-wrap gap-3">
           {study.channels.map((c) => (
-            <span key={c} className="rounded-full border border-red-500/30 bg-red-500/5 px-6 py-3 text-lg font-semibold text-white">
+            <span key={c} className="rounded-xl border border-rose bg-white px-5 py-3 text-lg font-semibold text-ink shadow-card">
               {c}
             </span>
           ))}
@@ -143,13 +143,13 @@ export default async function CaseStudyPage(props: PageProps<"/case-studies/[slu
 
       {/* 6. Results */}
       <Section glow="right">
-        <SectionHeading eyebrow="Results" title={<>What was <span className="text-red-500">achieved</span></>} />
+        <SectionHeading eyebrow="Results" title={<>What was <span className="text-brand">achieved</span></>} />
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           {study.results.metrics.map((m, i) => (
             <Reveal key={m.label} delay={i * 0.08}>
-              <div className="h-full rounded-3xl border border-white/10 bg-white/[0.04] p-8 backdrop-blur-xl">
-                <p className="text-4xl font-bold tracking-tight text-red-500 sm:text-5xl">{m.value}</p>
-                <p className="mt-3 text-gray-400">{m.label}</p>
+              <div className="relative h-full overflow-hidden rounded-2xl border border-line bg-white p-8 shadow-card before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-brand before:content-['']">
+                <p className="text-4xl font-bold tracking-tight text-brand sm:text-5xl">{m.value}</p>
+                <p className="mt-3 text-body">{m.label}</p>
               </div>
             </Reveal>
           ))}
@@ -157,8 +157,8 @@ export default async function CaseStudyPage(props: PageProps<"/case-studies/[slu
         <Reveal>
           <ul className="mt-10 grid gap-4 md:grid-cols-2">
             {study.results.highlights.map((h) => (
-              <li key={h} className="flex gap-3 text-lg leading-8 text-gray-300">
-                <Check aria-hidden className="mt-2 h-5 w-5 shrink-0 text-red-500" />
+              <li key={h} className="flex gap-3 text-lg leading-8 text-body">
+                <Check aria-hidden className="mt-2 h-5 w-5 shrink-0 text-brand-hover" />
                 {h}
               </li>
             ))}
@@ -168,13 +168,13 @@ export default async function CaseStudyPage(props: PageProps<"/case-studies/[slu
 
       {/* 7. Visual gallery */}
       <Section>
-        <SectionHeading eyebrow="Visual Gallery" title={<>Inside the <span className="text-red-500">work</span></>} />
+        <SectionHeading eyebrow="Visual Gallery" title={<>Inside the <span className="text-brand">work</span></>} />
         <div className="mt-12 grid gap-6 sm:grid-cols-2">
           {study.gallery.map((g, i) => (
             <Reveal key={g.caption} delay={(i % 2) * 0.08}>
               <figure>
                 <CaseVisual kind={g.kind} />
-                <figcaption className="mt-4 text-sm text-gray-400">{g.caption}</figcaption>
+                <figcaption className="mt-4 text-sm text-body">{g.caption}</figcaption>
               </figure>
             </Reveal>
           ))}
@@ -183,7 +183,7 @@ export default async function CaseStudyPage(props: PageProps<"/case-studies/[slu
 
       {/* 8. Key learnings */}
       <Section glow="left">
-        <SectionHeading eyebrow="Key Learnings" title={<>What this project <span className="text-red-500">taught us</span></>} />
+        <SectionHeading eyebrow="Key Learnings" title={<>What this project <span className="text-brand">taught us</span></>} />
         <ItemGrid items={study.learnings} numbered columns={study.learnings.length >= 3 ? 3 : 2} />
       </Section>
 
@@ -191,14 +191,14 @@ export default async function CaseStudyPage(props: PageProps<"/case-studies/[slu
       <Section>
         <Link
           href={`/case-studies/${next.slug}`}
-          className="group flex flex-col justify-between gap-6 rounded-3xl border border-white/10 bg-white/[0.03] p-8 transition hover:border-red-500/40 sm:flex-row sm:items-center sm:p-10"
+          className="group flex flex-col justify-between gap-6 rounded-2xl border border-line bg-white p-8 shadow-card transition duration-300 hover:border-brand/30 hover:shadow-lift sm:flex-row sm:items-center sm:p-10"
         >
           <span>
-            <span className="text-xs uppercase tracking-[0.3em] text-gray-500">Next case study</span>
-            <span className="mt-3 block text-3xl font-bold text-white sm:text-4xl">{next.client}</span>
-            <span className="mt-2 block text-gray-400">{next.category}</span>
+            <span className="text-sm font-semibold text-slate-500">Next case study</span>
+            <span className="mt-3 block text-3xl font-bold tracking-tight text-ink sm:text-4xl">{next.client}</span>
+            <span className="mt-2 block text-body">{next.category}</span>
           </span>
-          <ArrowRight aria-hidden className="h-8 w-8 shrink-0 text-red-500 transition group-hover:translate-x-2" />
+          <ArrowRight aria-hidden className="h-8 w-8 shrink-0 text-brand-hover transition group-hover:translate-x-2" />
         </Link>
       </Section>
 

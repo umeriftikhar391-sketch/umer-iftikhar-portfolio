@@ -14,7 +14,7 @@ const TEASER_KEY = "assistant-teaser-dismissed";
 
 function Bubble({ children }: { children: React.ReactNode }) {
   return (
-    <div className="max-w-[88%] rounded-2xl rounded-tl-md border border-white/10 bg-white/[0.06] px-4 py-3 text-sm leading-6 text-gray-200">
+    <div className="max-w-[88%] rounded-2xl rounded-tl-md border border-line bg-blush px-4 py-3 text-sm leading-6 text-ink">
       {children}
     </div>
   );
@@ -87,28 +87,28 @@ export default function AssistantWidget() {
             exit={{ opacity: 0, y: 24, scale: 0.96 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
             style={{ transformOrigin: "bottom right" }}
-            className="fixed inset-x-3 bottom-24 flex max-h-[calc(100dvh-11rem)] flex-col overflow-hidden rounded-3xl border border-white/10 bg-[#0a0a0a]/95 shadow-2xl shadow-black/60 outline-none backdrop-blur-xl sm:absolute sm:inset-x-auto sm:bottom-20 sm:right-0 sm:max-h-[min(640px,calc(100dvh-8rem))] sm:w-[400px]"
+            className="fixed inset-x-3 bottom-24 flex max-h-[calc(100dvh-11rem)] flex-col overflow-hidden rounded-3xl border border-line bg-white shadow-[0_24px_64px_-16px_rgb(15_23_42/0.28)] outline-none sm:absolute sm:inset-x-auto sm:bottom-20 sm:right-0 sm:max-h-[min(640px,calc(100dvh-8rem))] sm:w-[400px]"
           >
             {/* Header */}
-            <div className="flex items-center gap-3 border-b border-white/10 bg-gradient-to-r from-red-600/20 to-transparent px-5 py-4">
+            <div className="flex items-center gap-3 border-b border-line bg-gradient-to-r from-rose to-white px-5 py-4">
               {view === "form" ? (
                 <button
                   type="button"
                   onClick={() => setView("home")}
                   aria-label="Back"
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 text-white transition hover:bg-white/10"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-line bg-white text-ink transition-colors hover:bg-blush"
                 >
                   <ArrowLeft className="h-4 w-4" />
                 </button>
               ) : (
-                <span className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-red-600">
+                <span className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand">
                   <Sparkles aria-hidden className="h-5 w-5 text-white" />
-                  <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border-2 border-[#0a0a0a] bg-green-500" />
+                  <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border-2 border-white bg-green-500" />
                 </span>
               )}
               <div className="min-w-0 flex-1">
-                <p className="truncate font-semibold text-white">Umer&apos;s Growth Assistant</p>
-                <p className="truncate text-xs text-gray-400">
+                <p className="truncate font-semibold text-ink">Umer&apos;s Growth Assistant</p>
+                <p className="truncate text-xs text-body">
                   {view === "form" ? "Send your project details" : "Ads · SEO · Websites · Shopify"}
                 </p>
               </div>
@@ -116,7 +116,7 @@ export default function AssistantWidget() {
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Close assistant"
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-gray-400 transition hover:bg-white/10 hover:text-white"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-body transition-colors hover:bg-white hover:text-ink"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -136,12 +136,12 @@ export default function AssistantWidget() {
                     <button
                       type="button"
                       onClick={() => openForm()}
-                      className="group flex w-full items-center gap-4 rounded-2xl bg-red-600 p-4 text-left text-white transition hover:bg-red-500"
+                      className="group flex w-full items-center gap-4 rounded-xl bg-brand p-4 text-left text-white shadow-cta transition-colors hover:bg-brand-hover"
                     >
                       <FileText aria-hidden className="h-5 w-5 shrink-0" />
                       <span className="flex-1">
                         <span className="block font-semibold">Get a strategy proposal</span>
-                        <span className="block text-xs text-white/80">Fill a quick form, reply by email</span>
+                        <span className="block text-xs text-white/90">Fill a quick form, reply by email</span>
                       </span>
                       <ChevronRight aria-hidden className="h-4 w-4 transition group-hover:translate-x-1" />
                     </button>
@@ -149,25 +149,25 @@ export default function AssistantWidget() {
                       href={whatsappLink("Hi Umer, I found you through your website and want to discuss a project.")}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex w-full items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-white transition hover:border-green-500/50"
+                      className="group flex w-full items-center gap-4 rounded-xl border border-line bg-white p-4 text-ink transition-colors hover:border-green-600/50 hover:bg-green-50"
                     >
-                      <MessageCircle aria-hidden className="h-5 w-5 shrink-0 text-green-500" />
+                      <MessageCircle aria-hidden className="h-5 w-5 shrink-0 text-green-600" />
                       <span className="flex-1">
                         <span className="block font-semibold">Chat on WhatsApp</span>
-                        <span className="block text-xs text-gray-400">Fastest way to reach Umer</span>
+                        <span className="block text-xs text-body">Fastest way to reach Umer</span>
                       </span>
-                      <ChevronRight aria-hidden className="h-4 w-4 text-gray-500 transition group-hover:translate-x-1" />
+                      <ChevronRight aria-hidden className="h-4 w-4 text-slate-500 transition group-hover:translate-x-1" />
                     </a>
                     <a
                       href={`mailto:${siteConfig.email}?subject=${encodeURIComponent("Project enquiry")}`}
-                      className="group flex w-full items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-white transition hover:border-red-500/50"
+                      className="group flex w-full items-center gap-4 rounded-xl border border-line bg-white p-4 text-ink transition-colors hover:border-brand/40 hover:bg-blush"
                     >
-                      <Mail aria-hidden className="h-5 w-5 shrink-0 text-red-500" />
+                      <Mail aria-hidden className="h-5 w-5 shrink-0 text-brand-hover" />
                       <span className="min-w-0 flex-1">
                         <span className="block font-semibold">Send an email</span>
-                        <span className="block truncate text-xs text-gray-400">{siteConfig.email}</span>
+                        <span className="block truncate text-xs text-body">{siteConfig.email}</span>
                       </span>
-                      <ChevronRight aria-hidden className="h-4 w-4 text-gray-500 transition group-hover:translate-x-1" />
+                      <ChevronRight aria-hidden className="h-4 w-4 text-slate-500 transition group-hover:translate-x-1" />
                     </a>
                   </div>
 
@@ -179,7 +179,7 @@ export default function AssistantWidget() {
                           key={s.slug}
                           type="button"
                           onClick={() => openForm(s.name)}
-                          className="rounded-full border border-white/15 px-3 py-2 text-xs text-gray-200 transition hover:border-red-500/60 hover:text-white"
+                          className="min-h-9 rounded-full border border-line bg-white px-3 py-2 text-xs font-medium text-ink transition-colors hover:border-brand/50 hover:bg-blush hover:text-brand-hover"
                         >
                           {s.name}
                         </button>
@@ -192,7 +192,7 @@ export default function AssistantWidget() {
                   <Bubble>
                     {service ? (
                       <>
-                        Great choice. Share a few details about your <span className="text-white">{service}</span> goals and
+                        Great choice. Share a few details about your <span className="font-semibold text-ink">{service}</span> goals and
                         Umer will get back to you personally.
                       </>
                     ) : (
@@ -206,9 +206,9 @@ export default function AssistantWidget() {
                     )}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 rounded-full border border-white/10 py-3 text-sm text-gray-300 transition hover:border-green-500/50 hover:text-white"
+                    className="flex min-h-12 items-center justify-center gap-2 rounded-xl border border-line py-3 text-sm font-medium text-body transition-colors hover:border-green-600/50 hover:bg-green-50 hover:text-ink"
                   >
-                    <MessageCircle aria-hidden className="h-4 w-4 text-green-500" /> Prefer WhatsApp? Message directly
+                    <MessageCircle aria-hidden className="h-4 w-4 text-green-600" /> Prefer WhatsApp? Message directly
                   </a>
                 </div>
               )}
@@ -224,17 +224,17 @@ export default function AssistantWidget() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
-            className="absolute bottom-20 right-0 w-[240px] rounded-2xl rounded-br-md border border-white/10 bg-[#0a0a0a]/95 p-4 pr-9 text-sm text-gray-200 shadow-2xl backdrop-blur-xl"
+            className="absolute bottom-20 right-0 w-[240px] rounded-2xl rounded-br-md border border-line bg-white p-4 pr-9 text-sm text-body shadow-lift"
           >
             <button type="button" onClick={toggle} className="text-left">
-              <span className="font-semibold text-white">Need more leads or sales?</span> Tell me about your goals.
+              <span className="font-semibold text-ink">Need more leads or sales?</span> Tell me about your goals.
               It takes under a minute.
             </button>
             <button
               type="button"
               onClick={dismissTeaser}
               aria-label="Dismiss"
-              className="absolute right-2 top-2 rounded-full p-1 text-gray-500 hover:text-white"
+              className="absolute right-2 top-2 rounded-full p-1 text-slate-500 hover:text-ink"
             >
               <X className="h-4 w-4" />
             </button>
@@ -249,9 +249,9 @@ export default function AssistantWidget() {
         aria-expanded={open}
         aria-label={open ? "Close assistant" : "Open growth assistant"}
         data-cta="assistant_launcher"
-        className="relative flex h-14 w-14 items-center justify-center rounded-full bg-red-600 text-white shadow-[0_10px_40px_-8px_rgba(239,68,68,0.8)] transition hover:scale-105 hover:bg-red-500 sm:h-16 sm:w-16"
+        className="relative flex h-14 w-14 items-center justify-center rounded-full bg-brand text-white shadow-cta transition-colors hover:bg-brand-hover focus-visible:outline-offset-4 sm:h-16 sm:w-16"
       >
-        {!opened && <span aria-hidden className="absolute inset-0 animate-ping rounded-full bg-red-600/40" />}
+        {!opened && <span aria-hidden className="absolute -inset-1.5 rounded-full ring-2 ring-brand/25" />}
         <AnimatePresence mode="wait" initial={false}>
           <motion.span
             key={open ? "close" : "open"}

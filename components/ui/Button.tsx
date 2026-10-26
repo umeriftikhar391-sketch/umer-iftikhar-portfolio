@@ -4,9 +4,9 @@ import { ArrowUpRight } from "lucide-react";
 type Variant = "primary" | "secondary" | "ghost";
 
 const styles: Record<Variant, string> = {
-  primary: "bg-red-600 text-white hover:bg-red-500 shadow-[0_10px_40px_-10px_rgba(239,68,68,0.6)]",
-  secondary: "border border-white/25 text-white hover:bg-white hover:text-black",
-  ghost: "text-white/80 hover:text-white underline-offset-4 hover:underline px-0",
+  primary: "bg-brand text-white shadow-cta hover:bg-brand-hover active:bg-brand-hover",
+  secondary: "border border-brand/35 bg-white text-ink hover:border-brand hover:bg-blush hover:text-brand-hover",
+  ghost: "text-ink hover:text-brand-hover underline-offset-4 hover:underline px-0",
 };
 
 export default function Button({
@@ -27,9 +27,9 @@ export default function Button({
   className?: string;
   arrow?: boolean;
 }) {
-  const classes = `group inline-flex items-center justify-center gap-2 rounded-full ${
-    variant === "ghost" ? "" : "px-7 py-4"
-  } text-sm sm:text-base font-semibold transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-500 ${styles[variant]} ${className}`;
+  const classes = `group inline-flex min-h-12 items-center justify-center gap-2 rounded-xl ${
+    variant === "ghost" ? "" : "px-6 py-3"
+  } text-base font-semibold transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-hover ${styles[variant]} ${className}`;
   const content = (
     <>
       {children}

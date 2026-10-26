@@ -38,32 +38,32 @@ export default function ContactPage() {
           <Breadcrumbs items={[{ name: "Contact", path: "/contact" }]} />
           <div className="mt-8 grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
             <Reveal>
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-red-500 sm:text-sm">Contact</p>
-              <h1 className="mt-6 text-balance text-5xl font-bold leading-[0.98] tracking-tight text-white sm:text-6xl lg:text-7xl">
-                Let&apos;s talk about <span className="text-red-500">growth.</span>
+              <p className="eyebrow">Contact</p>
+              <h1 className="mt-6 text-balance text-[clamp(2.5rem,6.5vw,4.75rem)] font-bold leading-[1.02] tracking-[-0.035em] text-ink">
+                Let&apos;s talk about <span className="text-brand">growth.</span>
               </h1>
-              <p className="mt-8 max-w-xl text-lg leading-8 text-gray-400">
+              <p className="mt-8 max-w-xl text-lg leading-8 text-body">
                 Tell me where your business is today and where you want it to be. I&apos;ll come back with honest
                 recommendations on the fastest path to more leads and sales.
               </p>
               <ul className="mt-10 space-y-4">
                 {channels.map(({ icon: Icon, label, value, href }) => (
-                  <li key={label} className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-red-500/10">
-                      <Icon aria-hidden className="h-5 w-5 text-red-500" />
+                  <li key={label} className="flex items-center gap-4 rounded-2xl border border-line bg-white p-4 shadow-card">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-rose">
+                      <Icon aria-hidden className="h-5 w-5 text-brand-hover" />
                     </span>
                     <span className="min-w-0">
-                      <span className="block text-xs uppercase tracking-widest text-gray-500">{label}</span>
+                      <span className="block text-xs uppercase tracking-widest text-slate-500">{label}</span>
                       {href ? (
                         <a
                           href={href}
                           {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                          className="block break-all text-white transition hover:text-red-400"
+                          className="block break-all font-medium text-ink transition-colors hover:text-brand-hover"
                         >
                           {value}
                         </a>
                       ) : (
-                        <span className="block text-white">{value}</span>
+                        <span className="block text-ink">{value}</span>
                       )}
                     </span>
                   </li>
@@ -78,7 +78,7 @@ export default function ContactPage() {
       </section>
 
       <Section>
-        <SectionHeading eyebrow="FAQ" title={<>Before you <span className="text-red-500">reach out</span></>} />
+        <SectionHeading eyebrow="FAQ" title={<>Before you <span className="text-brand">reach out</span></>} />
         <FaqList faqs={faqs} />
       </Section>
     </>

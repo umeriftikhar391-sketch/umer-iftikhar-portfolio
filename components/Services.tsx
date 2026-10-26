@@ -13,12 +13,12 @@ export default function Services() {
             eyebrow="What I Do"
             title={
               <>
-                Digital Growth <span className="text-red-500">Systems</span>
+                Digital Growth <span className="text-brand">Systems</span>
               </>
             }
             intro="Most brands don't have a traffic problem or a website problem. They have a system problem. I connect paid media, search, your website and your data so every channel makes the others perform better."
           />
-          <Link href="/services" className="shrink-0 text-sm font-semibold text-white underline-offset-4 hover:underline" data-cta="home_all_services">
+          <Link href="/services" className="inline-flex min-h-11 shrink-0 items-center text-[0.9375rem] font-semibold text-brand-hover underline-offset-4 hover:underline" data-cta="home_all_services">
             All services →
           </Link>
         </div>
@@ -30,21 +30,20 @@ export default function Services() {
               <Reveal key={service.slug} delay={index * 0.05}>
                 <Link
                   href={`/services/${service.slug}`}
-                  className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-7 backdrop-blur-xl transition duration-500 hover:-translate-y-2 hover:border-red-500/40"
+                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white p-7 shadow-card transition duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-lift"
                 >
-                  <div className="absolute inset-0 bg-red-600/0 transition duration-500 group-hover:bg-red-600/10" />
                   <div className="relative z-10 flex h-full flex-col">
                     <div className="flex items-start justify-between">
-                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-red-500/10">
-                        <Icon className="h-7 w-7 text-red-500" />
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-rose">
+                        <Icon className="h-6 w-6 text-brand-hover" />
                       </div>
-                      <ArrowUpRight className="h-5 w-5 text-white/30 transition group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-red-500" />
+                      <ArrowUpRight className="h-5 w-5 text-slate-400 transition group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-brand" />
                     </div>
-                    <h3 className="mt-8 text-2xl font-bold text-white">{service.name}</h3>
-                    <p className="mt-3 flex-1 text-sm leading-7 text-gray-400">{service.summary}</p>
+                    <h3 className="mt-7 text-xl font-bold tracking-tight text-ink">{service.name}</h3>
+                    <p className="mt-3 flex-1 text-[0.9375rem] leading-7 text-body">{service.summary}</p>
                     <div className="mt-6 flex flex-wrap gap-2">
                       {service.tags.map((tag) => (
-                        <span key={tag} className="rounded-full border border-white/20 px-3 py-1.5 text-xs text-gray-300">
+                        <span key={tag} className="rounded-full bg-blush px-3 py-1.5 text-xs font-medium text-body">
                           {tag}
                         </span>
                       ))}
