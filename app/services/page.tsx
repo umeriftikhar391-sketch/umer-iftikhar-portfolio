@@ -36,24 +36,24 @@ export default function ServicesPage() {
               <Reveal key={service.slug} delay={(i % 2) * 0.08}>
                 <Link
                   href={`/services/${service.slug}`}
-                  className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-8 backdrop-blur-xl transition duration-500 hover:-translate-y-1 hover:border-red-500/40 sm:p-10"
+                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white p-8 shadow-card transition duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-lift sm:p-10"
                 >
                   <div className="flex items-start justify-between">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-red-500/10">
-                      <Icon className="h-7 w-7 text-red-500" />
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-rose">
+                      <Icon className="h-6 w-6 text-brand-hover" />
                     </div>
-                    <ArrowUpRight className="h-6 w-6 text-white/30 transition group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-red-500" />
+                    <ArrowUpRight className="h-6 w-6 text-slate-400 transition group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-brand" />
                   </div>
-                  <h2 className="mt-8 text-3xl font-bold text-white">{service.name}</h2>
-                  <p className="mt-4 flex-1 leading-7 text-gray-400">{service.summary}</p>
+                  <h2 className="mt-8 text-3xl font-bold text-ink">{service.name}</h2>
+                  <p className="mt-4 flex-1 leading-7 text-body">{service.summary}</p>
                   <ul className="mt-6 space-y-2">
                     {service.outcomes.map((o) => (
-                      <li key={o} className="flex items-center gap-3 text-sm text-gray-300">
-                        <Check className="h-4 w-4 text-red-500" /> {o}
+                      <li key={o} className="flex items-center gap-3 text-sm text-body">
+                        <Check className="h-4 w-4 text-brand-hover" /> {o}
                       </li>
                     ))}
                   </ul>
-                  <span className="mt-8 text-sm font-semibold text-white">Explore {service.name} →</span>
+                  <span className="mt-8 text-[0.9375rem] font-semibold text-brand-hover group-hover:underline">Explore {service.name} →</span>
                 </Link>
               </Reveal>
             );
@@ -65,7 +65,7 @@ export default function ServicesPage() {
         <SectionHeading
           align="center"
           eyebrow="Not sure where to start?"
-          title={<>Start with the <span className="text-red-500">biggest bottleneck</span></>}
+          title={<>Start with the <span className="text-brand">biggest bottleneck</span></>}
           intro="Most businesses don't need every service at once. In a strategy call we'll identify the one constraint holding growth back, whether that's traffic, conversion or measurement, and fix that first."
         />
       </Section>
