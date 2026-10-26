@@ -17,14 +17,13 @@ type Stat = (typeof siteConfig.stats)[number];
 export default function Results() {
   return (
     <section className="relative overflow-hidden px-5 py-24 sm:px-6 lg:py-32">
-      <div className="absolute left-0 top-0 hidden h-[500px] w-[500px] rounded-full bg-red-600/10 blur-[150px] md:block" />
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-red-500 sm:text-sm">Performance Results</p>
-          <h2 className="mt-5 text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-7xl">
-            Numbers Behind <span className="text-red-500">Growth</span>
+          <p className="eyebrow">Performance Results</p>
+          <h2 className="mt-5 text-[clamp(2.125rem,5vw,3.5rem)] font-bold leading-[1.08] tracking-[-0.025em] text-ink">
+            Numbers Behind <span className="text-brand">Growth</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-400">
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-body">
             Every campaign is measured against business outcomes, not vanity metrics. Here&apos;s what that discipline adds up to.
           </p>
         </div>
@@ -64,14 +63,14 @@ function ResultCard({ item, index }: { item: Stat; index: number }) {
       initial={false}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="rounded-3xl border border-white/10 bg-white/[0.04] p-8 backdrop-blur-xl transition hover:border-red-500/40"
+      className="relative overflow-hidden rounded-2xl border border-line bg-white p-8 shadow-card transition duration-300 before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-brand before:content-[''] hover:shadow-lift"
     >
-      <p className="text-5xl font-bold text-red-500">
+      <p className="text-5xl font-bold tracking-tight text-brand">
         <span className="sr-only">{item.value.toLocaleString("en-US")}{item.suffix}</span>
         <span aria-hidden="true"><span ref={numberRef}>{item.value.toLocaleString("en-US")}</span>{item.suffix}</span>
       </p>
-      <h3 className="mt-6 text-xl font-bold text-white">{item.label}</h3>
-      <p className="mt-4 leading-7 text-gray-400">{descriptions[item.label]}</p>
+      <h3 className="mt-6 text-xl font-bold text-ink">{item.label}</h3>
+      <p className="mt-4 leading-7 text-body">{descriptions[item.label]}</p>
     </motion.div>
   );
 }
