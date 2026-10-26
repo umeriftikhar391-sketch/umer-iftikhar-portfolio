@@ -42,42 +42,42 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed left-1/2 top-4 z-50 w-[calc(100%-2rem)] max-w-6xl -translate-x-1/2 rounded-full border px-4 py-3 transition-all duration-500 sm:top-5 sm:px-6 ${
+        className={`fixed left-1/2 top-3 z-50 w-[calc(100%-1.5rem)] max-w-6xl -translate-x-1/2 rounded-2xl border px-4 py-2.5 transition-[background-color,box-shadow,border-color] duration-300 sm:top-4 sm:w-[calc(100%-2rem)] sm:px-5 ${
           scrolled || open
-            ? "border-white/10 bg-black/85 shadow-2xl shadow-black/50 backdrop-blur-xl"
-            : "border-white/10 bg-white/5 backdrop-blur-md"
+            ? "border-line bg-white/95 shadow-card backdrop-blur-xl"
+            : "border-line/70 bg-white/80 backdrop-blur-md"
         }`}
       >
         <nav aria-label="Main" className="flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold tracking-tight text-white" aria-label="Umer Iftikhar, home">
-            Umer<span className="text-red-500">.</span>
+          <Link href="/" className="flex min-h-11 items-center rounded-lg text-2xl font-bold tracking-tight text-ink" aria-label="Umer Iftikhar, home">
+            Umer<span className="text-brand">.</span>
           </Link>
 
-          <ul className="hidden items-center gap-4 text-sm md:flex lg:gap-8">
+          <ul className="hidden items-center gap-1 text-[0.9375rem] font-medium md:flex lg:gap-2">
             {mainNav.map((link) =>
               link.href === "/services" ? (
                 <li key={link.href} className="group relative">
                   <Link
                     href={link.href}
-                    className={`inline-flex items-center gap-1 transition hover:text-white ${isActive(link.href) ? "text-white" : "text-gray-400"}`}
+                    className={`inline-flex min-h-11 items-center gap-1 rounded-lg px-3 transition-colors hover:bg-blush hover:text-ink ${isActive(link.href) ? "text-brand-hover" : "text-body"}`}
                   >
                     {link.name}
                     <ChevronDown aria-hidden className="h-3.5 w-3.5 transition group-focus-within:rotate-180 group-hover:rotate-180" />
                   </Link>
-                  <div className="invisible absolute left-1/2 top-full w-[520px] -translate-x-1/2 pt-5 opacity-0 transition-all duration-300 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
-                    <div className="grid grid-cols-2 gap-1 rounded-3xl border border-white/10 bg-black/95 p-3 shadow-2xl backdrop-blur-xl">
+                  <div className="invisible absolute left-1/2 top-full w-[520px] -translate-x-1/2 pt-3 opacity-0 transition-opacity duration-200 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                    <div className="grid grid-cols-2 gap-1 rounded-2xl border border-line bg-white p-2 shadow-lift">
                       {services.map((s) => {
                         const Icon = s.icon;
                         return (
                           <Link
                             key={s.slug}
                             href={`/services/${s.slug}`}
-                            className="flex items-start gap-3 rounded-2xl p-3 transition hover:bg-white/[0.06]"
+                            className="flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-blush"
                           >
-                            <Icon aria-hidden className="mt-0.5 h-4 w-4 shrink-0 text-red-500" />
+                            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-rose"><Icon aria-hidden className="h-4 w-4 text-brand-hover" /></span>
                             <span>
-                              <span className="block font-semibold text-white">{s.name}</span>
-                              <span className="mt-0.5 block text-xs text-gray-500">{s.tags.slice(0, 2).join(" · ")}</span>
+                              <span className="block font-semibold text-ink">{s.name}</span>
+                              <span className="mt-0.5 block text-xs text-slate-500">{s.tags.slice(0, 2).join(" · ")}</span>
                             </span>
                           </Link>
                         );
@@ -89,7 +89,7 @@ export default function Navbar() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={`transition hover:text-white ${isActive(link.href) ? "text-white" : "text-gray-400"}`}
+                    className={`inline-flex min-h-11 items-center rounded-lg px-3 transition-colors hover:bg-blush hover:text-ink ${isActive(link.href) ? "text-brand-hover" : "text-body"}`}
                   >
                     {link.name}
                   </Link>
@@ -113,7 +113,7 @@ export default function Navbar() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white md:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-white text-ink transition-colors hover:bg-blush md:hidden"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -128,7 +128,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-40 overflow-y-auto bg-black/95 px-6 pb-10 pt-28 backdrop-blur-xl md:hidden"
+            className="fixed inset-0 z-40 overflow-y-auto bg-white px-6 pb-10 pt-24 md:hidden"
           >
             <ul className="space-y-1">
               {[{ name: "Home", href: "/" }, ...mainNav].map((link, i) => (
@@ -141,7 +141,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className={`block py-2 text-3xl font-bold ${pathname === link.href ? "text-red-500" : "text-white"}`}
+                    className={`block border-b border-line py-3 text-2xl font-bold tracking-tight ${pathname === link.href ? "text-brand-hover" : "text-ink"}`}
                   >
                     {link.name}
                   </Link>
@@ -149,11 +149,11 @@ export default function Navbar() {
               ))}
             </ul>
 
-            <p className="mt-10 text-xs font-semibold uppercase tracking-[0.3em] text-gray-500">Services</p>
+            <p className="eyebrow mt-8">Services</p>
             <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3">
               {services.map((s) => (
                 <li key={s.slug}>
-                  <Link href={`/services/${s.slug}`} onClick={() => setOpen(false)} className="text-sm text-gray-300">
+                  <Link href={`/services/${s.slug}`} onClick={() => setOpen(false)} className="flex min-h-11 items-center text-[0.9375rem] text-body hover:text-ink">
                     {s.name}
                   </Link>
                 </li>
@@ -165,7 +165,7 @@ export default function Navbar() {
                 href="/contact"
                 onClick={() => setOpen(false)}
                 data-cta="mobile_menu_book_call"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-red-600 px-8 py-4 font-semibold text-white"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand px-8 py-3 font-semibold text-white shadow-cta hover:bg-brand-hover"
               >
                 Book a Strategy Call <ArrowUpRight className="h-4 w-4" />
               </Link>
@@ -173,7 +173,7 @@ export default function Navbar() {
                 href={whatsappLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full border border-white/25 px-8 py-4 font-semibold text-white"
+                className="inline-flex min-h-12 items-center justify-center rounded-xl border border-brand/35 px-8 py-3 font-semibold text-ink hover:bg-blush"
               >
                 WhatsApp Me
               </a>

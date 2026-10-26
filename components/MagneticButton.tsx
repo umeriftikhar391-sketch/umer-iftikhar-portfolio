@@ -43,10 +43,9 @@ export default function MagneticButton({
       data-cta={cta}
       onMouseMove={move}
       onMouseLeave={leave}
-      whileHover={{ scale: 1.05 }}
       transition={{ type: "spring", stiffness: 300 }}
       {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className={`inline-flex items-center justify-center rounded-full bg-red-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-red-500 ${className}`}
+      className={`inline-flex min-h-11 items-center justify-center rounded-xl bg-brand px-5 py-2.5 text-sm font-semibold text-white shadow-cta transition-colors hover:bg-brand-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-hover ${className}`}
     >
       {children}
     </Component>
