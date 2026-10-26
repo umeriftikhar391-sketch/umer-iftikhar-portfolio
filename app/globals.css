@@ -4,9 +4,49 @@
   --font-sans: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
 }
 
+/* Design tokens: premium red-and-white B2B palette. Each token becomes a Tailwind utility
+   (bg-brand, text-ink, border-line, bg-blush …) so components never hard-code colours. */
+@theme {
+  --color-brand: #e53935; /* Primary Red: primary CTAs, large accents */
+  --color-brand-hover: #c62828; /* Primary Hover: hover/active, small red text (AA on white) */
+  --color-coral: #ff5a5f; /* Vibrant Coral: decorative highlights, accents on dark */
+  --color-blush: #fff5f5; /* Soft Blush: alternating section backgrounds */
+  --color-rose: #fde8e8; /* Light Rose: badges, icon backgrounds */
+  --color-ink: #1f1f1f; /* Deep Charcoal: headings, footer */
+  --color-body: #475569; /* Slate Gray: body text */
+  --color-line: #e5e7eb; /* Light Border: cards and components */
+
+  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.04), 0 4px 16px -4px rgb(15 23 42 / 0.06);
+  --shadow-lift: 0 2px 4px rgb(15 23 42 / 0.04), 0 18px 40px -12px rgb(198 40 40 / 0.18);
+  --shadow-cta: 0 8px 24px -8px rgb(229 57 53 / 0.55);
+}
+
+/* Section label above headings: sentence case pill instead of wide all-caps tracking. */
+@utility eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background: var(--color-rose);
+  padding: 0.375rem 0.875rem;
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--color-brand-hover);
+}
+
+/* Native select arrow is hidden by appearance-none; draw a consistent chevron instead. */
+@utility select-chevron {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.75rem;
+}
+
 :root {
-  --background: #050505;
-  --foreground: #ffffff;
+  --background: #ffffff;
+  --foreground: #1f1f1f;
 }
 
 * {
@@ -22,8 +62,8 @@ body {
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
-  background: #050505;
-  color: white;
+  background: #ffffff;
+  color: var(--color-ink);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -45,13 +85,14 @@ video {
 }
 
 ::selection {
-  background: #ef4444;
-  color: white;
+  background: var(--color-rose);
+  color: var(--color-ink);
 }
 
 :focus-visible {
-  outline: 2px solid #ef4444;
+  outline: 2px solid var(--color-brand-hover);
   outline-offset: 3px;
+  border-radius: 4px;
 }
 
 /* Page loader: pure CSS so it never waits on JavaScript to disappear. */
@@ -81,18 +122,6 @@ video {
 @keyframes loader-bar {
   to {
     width: 100%;
-  }
-}
-
-/* Background glow drift (desktop only) */
-@media (min-width: 768px) {
-  .bg-glow {
-    animation: glow-drift 12s ease-in-out infinite;
-  }
-}
-@keyframes glow-drift {
-  50% {
-    transform: translate(60px, -40px);
   }
 }
 
