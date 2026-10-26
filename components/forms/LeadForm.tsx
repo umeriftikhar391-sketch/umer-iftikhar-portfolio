@@ -11,7 +11,7 @@ type Status = "idle" | "loading" | "success" | "error";
 type FieldErrors = Partial<Record<string, string>>;
 
 const inputClass =
-  "peer w-full rounded-2xl border bg-black/60 px-5 py-4 text-white outline-none transition placeholder:text-gray-500 focus:border-red-500 focus:bg-black aria-[invalid=true]:border-red-500/70";
+  "peer min-h-12 w-full rounded-xl border bg-white px-4 py-3 text-base text-ink shadow-[inset_0_1px_2px_rgb(15_23_42/0.04)] outline-none transition-colors placeholder:text-slate-500 hover:border-slate-300 focus:border-brand focus:ring-4 focus:ring-brand/15 aria-[invalid=true]:border-brand-hover aria-[invalid=true]:bg-blush";
 
 function Field({
   label,
@@ -26,12 +26,12 @@ function Field({
 }) {
   return (
     <div className="space-y-2">
-      <label htmlFor={`lead-${name}`} className="block text-sm font-medium text-gray-300">
+      <label htmlFor={`lead-${name}`} className="block text-sm font-semibold text-ink">
         {label}
       </label>
       {children}
       {error && (
-        <p id={`lead-${name}-error`} className="text-sm text-red-400">
+        <p id={`lead-${name}-error`} className="text-sm font-medium text-brand-hover">
           {error}
         </p>
       )}
@@ -106,7 +106,7 @@ export default function LeadForm({
   return (
     <div
       ref={containerRef}
-      className={compact ? "relative" : "relative scroll-mt-28 rounded-3xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl sm:p-8"}
+      className={compact ? "relative" : "relative scroll-mt-28 rounded-3xl border border-line bg-white p-6 shadow-lift sm:p-8"}
     >
       <AnimatePresence mode="wait" initial={false}>
         {status === "success" ? (
@@ -119,13 +119,13 @@ export default function LeadForm({
             role="status"
             aria-live="polite"
           >
-            <span className="flex h-16 w-16 items-center justify-center rounded-full bg-red-500/10">
-              <CircleCheck className="h-8 w-8 text-red-500" />
+            <span className="flex h-16 w-16 items-center justify-center rounded-full bg-rose">
+              <CircleCheck className="h-8 w-8 text-brand-hover" />
             </span>
-            <h3 className="mt-6 text-3xl font-bold text-white">
+            <h3 className="mt-6 text-3xl font-bold text-ink">
               Thank you{firstName ? `, ${firstName}` : ""}.
             </h3>
-            <p className="mt-4 max-w-md leading-7 text-gray-400">
+            <p className="mt-4 max-w-md leading-7 text-body">
               Your project details are with me. I review every enquiry personally and will get back to you with next
               steps and a few questions about your goals.
             </p>
@@ -134,14 +134,14 @@ export default function LeadForm({
                 href={whatsappLink("Hi Umer, I just submitted the form on your website.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full bg-red-600 px-6 py-3 font-semibold text-white transition hover:bg-red-500"
+                className="inline-flex min-h-12 items-center justify-center rounded-xl bg-brand px-6 py-3 font-semibold text-white shadow-cta transition-colors hover:bg-brand-hover"
               >
                 Need it faster? WhatsApp me
               </a>
               <button
                 type="button"
                 onClick={() => setStatus("idle")}
-                className="rounded-full border border-white/20 px-6 py-3 font-semibold text-white transition hover:bg-white hover:text-black"
+                className="min-h-12 rounded-xl border border-brand/35 px-6 py-3 font-semibold text-ink transition-colors hover:bg-blush"
               >
                 Send another message
               </button>
@@ -158,21 +158,21 @@ export default function LeadForm({
           >
             <div className={`grid gap-5 ${compact ? "" : "sm:grid-cols-2"}`}>
               <Field label="Name *" name="name" error={errors.name}>
-                <input {...aria("name")} required autoComplete="name" placeholder="Your full name" className={`${inputClass} border-white/10`} />
+                <input {...aria("name")} required autoComplete="name" placeholder="Your full name" className={`${inputClass} border-line`} />
               </Field>
               <Field label="Email *" name="email" error={errors.email}>
-                <input {...aria("email")} required type="email" autoComplete="email" placeholder="you@company.com" className={`${inputClass} border-white/10`} />
+                <input {...aria("email")} required type="email" autoComplete="email" placeholder="you@company.com" className={`${inputClass} border-line`} />
               </Field>
               <Field label="Phone / WhatsApp *" name="phone" error={errors.phone}>
-                <input {...aria("phone")} required type="tel" autoComplete="tel" placeholder="+92 300 0000000" className={`${inputClass} border-white/10`} />
+                <input {...aria("phone")} required type="tel" autoComplete="tel" placeholder="+92 300 0000000" className={`${inputClass} border-line`} />
               </Field>
               <Field label="Company" name="company">
-                <input {...aria("company")} autoComplete="organization" placeholder="Company or brand" className={`${inputClass} border-white/10`} />
+                <input {...aria("company")} autoComplete="organization" placeholder="Company or brand" className={`${inputClass} border-line`} />
               </Field>
             </div>
 
             <Field label="Service needed *" name="service" error={errors.service}>
-              <select {...aria("service")} required defaultValue={defaultService} className={`${inputClass} appearance-none border-white/10`}>
+              <select {...aria("service")} required defaultValue={defaultService} className={`${inputClass} select-chevron appearance-none border-line`}>
                 <option value="" disabled>
                   Select a service
                 </option>
@@ -191,7 +191,7 @@ export default function LeadForm({
                 minLength={10}
                 rows={compact ? 3 : 5}
                 placeholder="What are you selling, what's your current monthly budget, and what result do you want in the next 90 days?"
-                className={`${inputClass} resize-y border-white/10`}
+                className={`${inputClass} resize-y border-line`}
               />
             </Field>
 
@@ -202,7 +202,7 @@ export default function LeadForm({
             </div>
 
             {status === "error" && message && (
-              <p role="alert" className="rounded-2xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+              <p role="alert" className="rounded-xl border border-brand/30 bg-blush px-4 py-3 text-sm font-medium text-red-800">
                 {message}
               </p>
             )}
@@ -210,7 +210,7 @@ export default function LeadForm({
             <button
               type="submit"
               disabled={status === "loading"}
-              className="group flex w-full items-center justify-center gap-2 rounded-full bg-red-600 py-4 font-semibold text-white transition hover:bg-red-500 disabled:cursor-not-allowed disabled:opacity-60"
+              className="group flex min-h-13 w-full items-center justify-center gap-2 rounded-xl bg-brand py-3.5 text-base font-semibold text-white shadow-cta transition-colors hover:bg-brand-hover disabled:cursor-not-allowed disabled:opacity-60"
             >
               {status === "loading" ? (
                 <>
@@ -223,7 +223,7 @@ export default function LeadForm({
                 </>
               )}
             </button>
-            <p className="text-center text-xs text-gray-500">No spam. Your details are only used to reply to your inquiry.</p>
+            <p className="text-center text-xs text-slate-500">No spam. Your details are only used to reply to your inquiry.</p>
           </motion.form>
         )}
       </AnimatePresence>

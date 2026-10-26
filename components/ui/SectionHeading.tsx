@@ -16,12 +16,12 @@ export default function SectionHeading({
   const center = align === "center";
   return (
     <Reveal className={center ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
-      <p className="text-xs font-semibold uppercase tracking-[0.3em] text-red-500 sm:text-sm">{eyebrow}</p>
-      <Tag className="mt-5 text-balance text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl">
+      <p className="eyebrow">{eyebrow}</p>
+      <Tag className="mt-5 text-balance text-[clamp(2.125rem,5vw,3.5rem)] font-bold leading-[1.08] tracking-[-0.025em] text-ink">
         {title}
       </Tag>
       {intro && (
-        <p className={`mt-6 text-pretty text-base leading-8 text-gray-400 sm:text-lg ${center ? "mx-auto" : ""} max-w-2xl`}>
+        <p className={`mt-5 text-pretty text-lg leading-8 text-body ${center ? "mx-auto" : ""} max-w-2xl`}>
           {intro}
         </p>
       )}

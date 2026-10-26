@@ -7,15 +7,15 @@ export default function Breadcrumbs({ items }: { items: { name: string; path: st
   return (
     <>
       <JsonLd data={breadcrumbSchema(all)} />
-      <nav aria-label="Breadcrumb" className="text-xs text-gray-500 sm:text-sm">
+      <nav aria-label="Breadcrumb" className="text-sm text-slate-500">
         <ol className="flex flex-wrap items-center gap-2">
           {all.map((item, i) => (
             <li key={item.path} className="flex items-center gap-2">
               {i > 0 && <span aria-hidden>/</span>}
               {i === all.length - 1 ? (
-                <span className="text-gray-300" aria-current="page">{item.name}</span>
+                <span className="font-medium text-ink" aria-current="page">{item.name}</span>
               ) : (
-                <Link href={item.path} className="transition hover:text-white">{item.name}</Link>
+                <Link href={item.path} className="transition-colors hover:text-brand-hover">{item.name}</Link>
               )}
             </li>
           ))}

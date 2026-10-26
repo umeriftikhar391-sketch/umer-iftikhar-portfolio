@@ -7,14 +7,14 @@ export default function FaqList({ faqs, path, renderText = text => text }: { faq
   return (
     <>
       <JsonLd data={faqSchema(faqs, path)} />
-      <div className="mt-12 divide-y divide-white/10 border-y border-white/10">
+      <div className="mt-12 space-y-3">
         {faqs.map((faq) => (
-          <details key={faq.q} className="group py-6">
-            <summary className="flex cursor-pointer list-none items-start justify-between gap-6 text-left text-lg font-semibold text-white marker:hidden [&::-webkit-details-marker]:hidden">
+          <details key={faq.q} className="group rounded-2xl border border-line bg-white px-5 py-1 shadow-card transition-colors open:border-brand/30 sm:px-6">
+            <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-6 py-4 text-left text-lg font-semibold text-ink marker:hidden hover:text-brand-hover [&::-webkit-details-marker]:hidden">
               {faq.q}
-              <Plus aria-hidden className="mt-1 h-5 w-5 shrink-0 text-red-500 transition-transform duration-300 group-open:rotate-45" />
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-rose"><Plus aria-hidden className="h-4 w-4 text-brand-hover transition-transform duration-300 group-open:rotate-45" /></span>
             </summary>
-            <p className="mt-4 max-w-3xl leading-8 text-gray-400">{renderText(faq.a)}</p>
+            <p className="max-w-3xl pb-5 leading-8 text-body">{renderText(faq.a)}</p>
           </details>
         ))}
       </div>
