@@ -63,6 +63,12 @@ export default function Footer() {
               <li>
                 <Link href="/case-studies" className="text-coral transition hover:text-white">View all →</Link>
               </li>
+              <li className="pt-3">
+                <Link href="/tools/roas-calculator" data-cta="footer_roas_calculator" className="inline-flex items-center gap-2 font-semibold text-white transition hover:text-coral">
+                  <span className="rounded-full bg-coral/15 px-2 py-0.5 text-xs font-semibold text-coral">Free tool</span>
+                  ROAS Calculator
+                </Link>
+              </li>
             </ul>
           </div>
 

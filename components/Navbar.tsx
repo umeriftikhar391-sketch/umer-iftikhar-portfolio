@@ -53,7 +53,7 @@ export default function Navbar() {
             Umer<span className="text-brand">.</span>
           </Link>
 
-          <ul className="hidden items-center gap-1 text-[0.9375rem] font-medium md:flex lg:gap-2">
+          <ul className="hidden items-center gap-1 whitespace-nowrap text-[0.9375rem] font-medium lg:flex xl:gap-2">
             {mainNav.map((link) =>
               link.href === "/services" ? (
                 <li key={link.href} className="group relative">
@@ -98,7 +98,7 @@ export default function Navbar() {
             )}
           </ul>
 
-          <div className="hidden md:block">
+          <div className="hidden shrink-0 lg:block">
             <MagneticButton href="/contact" cta="nav_book_call">
               Book a Strategy Call
             </MagneticButton>
@@ -113,7 +113,7 @@ export default function Navbar() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-white text-ink transition-colors hover:bg-blush md:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-white text-ink transition-colors hover:bg-blush lg:hidden"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -128,7 +128,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-40 overflow-y-auto bg-white px-6 pb-10 pt-24 md:hidden"
+            className="fixed inset-0 z-40 overflow-y-auto bg-white px-6 pb-10 pt-24 lg:hidden"
           >
             <ul className="space-y-1">
               {[{ name: "Home", href: "/" }, ...mainNav].map((link, i) => (
