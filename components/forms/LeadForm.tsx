@@ -42,10 +42,13 @@ function Field({
 export default function LeadForm({
   source,
   defaultService = "",
+  defaultMessage = "",
   compact = false,
 }: {
   source: string;
   defaultService?: string;
+  /** Optional pre-filled project details (e.g. a calculator summary); the visitor can edit it before sending. */
+  defaultMessage?: string;
   /** Single-column, borderless layout for tight spaces such as the assistant widget. */
   compact?: boolean;
 }) {
@@ -190,6 +193,7 @@ export default function LeadForm({
                 required
                 minLength={10}
                 rows={compact ? 3 : 5}
+                defaultValue={defaultMessage}
                 placeholder="What are you selling, what's your current monthly budget, and what result do you want in the next 90 days?"
                 className={`${inputClass} resize-y border-line`}
               />

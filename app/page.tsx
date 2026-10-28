@@ -8,6 +8,7 @@ const Stack = dynamic(() => import("@/components/Stack"));
 const Results = dynamic(() => import("@/components/Results"));
 import About from "@/components/About";
 import CtaSection from "@/components/sections/CtaSection";
+import RoasToolCta from "@/components/RoasToolCta";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
@@ -18,6 +19,7 @@ export default function Home() {
       <Services />
       <CaseStudies />
       <Results />
+      <RoasToolCta />
       <Clients />
       <Stack />
       <About />

@@ -63,6 +63,12 @@ export default function Footer() {
               <li>
                 <Link href="/case-studies" className="text-coral transition hover:text-white">View all →</Link>
               </li>
+              <li className="pt-3">
+                <Link href="/tools/roas-calculator" data-cta="footer_roas_calculator" className="inline-flex items-center gap-2 font-semibold text-white transition hover:text-coral">
+                  <span className="rounded-full bg-coral/15 px-2 py-0.5 text-xs font-semibold text-coral">Free tool</span>
+                  ROAS Calculator
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -86,7 +92,8 @@ export default function Footer() {
 
         <div className="flex flex-col justify-between gap-4 border-t border-white/10 pt-8 text-sm text-slate-400 sm:flex-row">
           <p>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
-          <nav aria-label="Footer" className="flex gap-6">
+          <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-2">
+            <Link href="/tools/roas-calculator" className="hover:text-white">ROAS Calculator</Link>
             <Link href="/blog" className="hover:text-white">Blog</Link>
             <Link href="/about" className="hover:text-white">About</Link>
             <Link href="/services" className="hover:text-white">Services</Link>

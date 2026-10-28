@@ -48,6 +48,7 @@ export const mainNav = [
   { name: "Services", href: "/services" },
   { name: "Case Studies", href: "/case-studies" },
   { name: "Blog", href: "/blog" },
+  { name: "ROAS Calculator", href: "/tools/roas-calculator" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ] as const;

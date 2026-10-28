@@ -9,7 +9,7 @@ import contentDates from "@/lib/content-dates.json";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   await connection();
   const paths = ["/", "/services", ...services.map(s => `/services/${s.slug}`),
-    "/case-studies", ...caseStudies.map(c => `/case-studies/${c.slug}`), "/about", "/contact"];
+    "/case-studies", ...caseStudies.map(c => `/case-studies/${c.slug}`), "/about", "/contact", "/tools/roas-calculator"];
   const existing = paths.map(path => ({
     url: absoluteUrl(path),
     lastModified: (contentDates as Record<string, string>)[path],
