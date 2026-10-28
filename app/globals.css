@@ -89,10 +89,14 @@ video {
   color: var(--color-ink);
 }
 
-:focus-visible {
-  outline: 2px solid var(--color-brand-hover);
-  outline-offset: 3px;
-  border-radius: 4px;
+/* Default keyboard focus ring. In the base layer so components with their own focus style
+   (e.g. form inputs with a focus border and ring) can override it with utilities. */
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--color-brand-hover);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
 }
 
 /* Page loader: pure CSS so it never waits on JavaScript to disappear. */

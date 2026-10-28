@@ -86,7 +86,8 @@ export default function Footer() {
 
         <div className="flex flex-col justify-between gap-4 border-t border-white/10 pt-8 text-sm text-slate-400 sm:flex-row">
           <p>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
-          <nav aria-label="Footer" className="flex gap-6">
+          <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-2">
+            <Link href="/tools/roas-calculator" className="hover:text-white">ROAS Calculator</Link>
             <Link href="/blog" className="hover:text-white">Blog</Link>
             <Link href="/about" className="hover:text-white">About</Link>
             <Link href="/services" className="hover:text-white">Services</Link>

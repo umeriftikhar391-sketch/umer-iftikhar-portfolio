@@ -11,7 +11,7 @@ assert.equal(sitemap.status, 200);
 assert.doesNotMatch(xml, /<priority>|<changefreq>/);
 const entries = [...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)].map(m => m[1]).filter(entry => !new URL(entry.match(/<loc>([^<]+)<\/loc>/)[1]).pathname.startsWith("/blog"));
 const urls = entries.map(entry => entry.match(/<loc>([^<]+)<\/loc>/)[1]);
-assert.equal(urls.length, 20);
+assert.equal(urls.length, 21);
 const modified = [...entries.join('').matchAll(/<lastmod>([^<]+)<\/lastmod>/g)].map(m => m[1]);
 assert.equal(modified.length, urls.length);
 for (const date of modified) assert.ok(Number.isFinite(Date.parse(date)));
@@ -70,4 +70,4 @@ if (process.env.INDEXNOW_KEY) {
   assert.equal(key.text, process.env.INDEXNOW_KEY);
   assert.equal(key.response.headers.get('x-robots-tag'), 'noindex');
 } else assert.equal(key.response.status, 404);
-console.log('Passed SEO checks across all 20 pages: canonical, H1, schema, headers, ISR, stats, 404, robots, sitemap, www redirect, and IndexNow key endpoint.');
+console.log('Passed SEO checks across all 21 pages: canonical, H1, schema, headers, ISR, stats, 404, robots, sitemap, www redirect, and IndexNow key endpoint.');
