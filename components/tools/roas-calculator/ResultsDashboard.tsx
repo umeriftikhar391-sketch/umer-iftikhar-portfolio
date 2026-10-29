@@ -11,11 +11,11 @@ import BudgetScenarios from "./BudgetScenarios";
 import BreakEvenAnalysis from "./BreakEvenAnalysis";
 import { TIPS } from "./AdvancedSettings";
 
-const CONVERSION_NAME: Record<Objective, { plural: string; cpa: string }> = {
-  leads: { plural: "Customers", cpa: "Est. Cost per Customer (CPA)" },
-  purchases: { plural: "Purchases", cpa: "Est. Cost per Purchase (CPA)" },
-  customers: { plural: "Customers", cpa: "Est. Cost per Customer (CPA)" },
-  traffic: { plural: "Conversions", cpa: "Est. CPA" },
+const CONVERSION_NAME: Record<Objective, { plural: string; cpa: string; cpaCaption: string }> = {
+  leads: { plural: "Customers", cpa: "Est. Cost per Acquired Customer (CPA)", cpaCaption: "Ad spend ÷ customers (not leads)" },
+  purchases: { plural: "Purchases", cpa: "Est. Cost per Purchase (CPA)", cpaCaption: "Ad spend ÷ purchases" },
+  customers: { plural: "Customers", cpa: "Est. Cost per Acquired Customer (CPA)", cpaCaption: "Ad spend ÷ customers" },
+  traffic: { plural: "Conversions", cpa: "Est. CPA", cpaCaption: "Ad spend ÷ conversions" },
 };
 
 export function EmptyState({ title, items }: { title: string; items: string[] }) {
@@ -67,10 +67,10 @@ export function ForecastDashboard({
     ...pick(r.clicks.value !== null, { label: "Est. Clicks", value: formatNumber(r.clicks.value), caption: "Budget ÷ CPC", tip: TIPS.cpc }),
     ...pick(r.objective === "leads" && r.leads.value !== null, { label: "Est. Leads", value: formatNumber(r.leads.value, 1), caption: "Clicks × conversion rate" }),
     ...pick(r.objective === "traffic" && r.leads.value !== null, { label: "Est. Conversions", value: formatNumber(r.leads.value, 1), caption: "Clicks × conversion rate" }),
-    ...pick(r.objective === "leads" && r.costPerLead.value !== null, { label: "Est. Cost per Lead", value: formatCurrency(r.costPerLead.value, currency) }),
+    ...pick(r.objective === "leads" && r.costPerLead.value !== null, { label: "Est. Cost per Lead (CPL)", value: formatCurrency(r.costPerLead.value, currency), caption: "Ad spend ÷ leads" }),
     ...pick(r.customers.value !== null, { label: `Est. ${names.plural}`, value: formatNumber(r.customers.value, 1), caption: r.objective === "leads" ? "Leads × close rate" : "Clicks × conversion rate" }),
     ...pick(r.revenue.value !== null, { label: "Est. Revenue", value: formatCurrency(r.revenue.value, currency), tone: "accent" }),
-    ...pick(r.cpa.value !== null, { label: names.cpa, value: formatCurrency(r.cpa.value, currency), tip: TIPS.cpa }),
+    ...pick(r.cpa.value !== null, { label: names.cpa, value: formatCurrency(r.cpa.value, currency), caption: names.cpaCaption, tip: TIPS.cpa }),
     ...pick(r.roas.value !== null, { label: "Projected ROAS", value: formatRoas(r.roas.value), tone: "accent", tip: TIPS.roas }),
     ...pick(r.breakEvenRoas.value !== null, { label: "Break-even ROAS", value: formatRoas(r.breakEvenRoas.value), caption: "1 ÷ gross margin" }),
     ...pick(r.contributionProfit.value !== null, {
@@ -150,8 +150,8 @@ export function ActualDashboard({
       tone: (a.contributionProfit.value ?? 0) < 0 ? "negative" : "positive",
       caption: "Revenue × margin − spend",
     }),
-    ...pick(a.cpa.value !== null, { label: "Actual CPA", value: formatCurrency(a.cpa.value, currency), tip: TIPS.cpa }),
-    ...pick(a.costPerLead.value !== null, { label: "Cost per Lead", value: formatCurrency(a.costPerLead.value, currency) }),
+    ...pick(a.cpa.value !== null, { label: "Cost per Purchase or Customer (CPA)", value: formatCurrency(a.cpa.value, currency), caption: "Ad spend ÷ purchases or new customers", tip: TIPS.cpa }),
+    ...pick(a.costPerLead.value !== null, { label: "Cost per Lead (CPL)", value: formatCurrency(a.costPerLead.value, currency), caption: "Ad spend ÷ leads" }),
     ...pick(a.cpc.value !== null, { label: "Actual CPC", value: formatCurrency(a.cpc.value, currency), tip: TIPS.cpc }),
     ...pick(a.ctr.value !== null, { label: "Click-through Rate", value: formatPercent(a.ctr.value) }),
     ...pick(a.conversionRate.value !== null, { label: "Conversion Rate", value: formatPercent(a.conversionRate.value), caption: "Purchases or customers ÷ clicks" }),

@@ -155,7 +155,7 @@ export default function Calculator() {
 
   const summary = () => {
     const lines = [
-      `Ad Budget & ROAS Calculator (${state.mode === "forecast" ? "forecast: estimates, not actual results" : "actual campaign results"})`,
+      `ROAS Calculator & Ad Budget Planner (${state.mode === "forecast" ? "forecast: estimates, not actual results" : "actual campaign results"})`,
       `Industry: ${industryName || "Not selected"}`,
       `Platform: ${platform.name}`,
       `Country: ${countryName || "Not selected"}`,
@@ -177,7 +177,7 @@ export default function Calculator() {
         `Ad spend: ${formatCurrency(actualInput.spend, state.currency)}`,
         `Attributed revenue: ${formatCurrency(actualInput.revenue, state.currency)}`,
         `Actual ROAS: ${formatRoas(actual.roas.value)} (break-even ${formatRoas(actual.breakEvenRoas.value)})`,
-        `Actual CPA: ${formatCurrency(actual.cpa.value, state.currency)}`,
+        `Cost per purchase or customer (CPA): ${formatCurrency(actual.cpa.value, state.currency)}`,
         `Ad-level contribution profit: ${formatCurrency(actual.contributionProfit.value, state.currency)}`
       );
     }
@@ -337,6 +337,12 @@ export default function Calculator() {
                 ) : (
                   <>
                     <p className="font-semibold text-ink">{NO_BENCHMARK_MESSAGE}</p>
+                    {BENCHMARKS.length === 0 && (
+                      <p className="mt-2">
+                        <strong className="text-ink">Benchmark status:</strong> no verified benchmark data is included yet. Your industry,
+                        platform and country choices label the forecast; they do not load local averages.
+                      </p>
+                    )}
                     <p className="mt-2">
                       Not sure what to enter? Use your own past campaign numbers, or load an example to see how the calculator works. Example
                       values are labelled <em>Illustrative Scenario</em> and are not industry data.

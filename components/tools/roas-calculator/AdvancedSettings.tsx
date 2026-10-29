@@ -13,7 +13,7 @@ export const TIPS = {
   value: { term: "average customer value", text: "The revenue one new customer brings in over the period you want to measure (first order, or lifetime value if you track it consistently)." },
   close: { term: "close rate", text: "The percentage of leads your team turns into paying customers. Leads × close rate = customers." },
   margin: { term: "gross margin", text: "The share of revenue left after the direct cost of delivering what you sold (product cost, fulfilment), before ads, overhead and tax." },
-  cpa: { term: "CPA", text: "Cost per acquisition: ad spend divided by the number of customers or purchases." },
+  cpa: { term: "CPA", text: "Cost per acquisition: ad spend divided by the number of acquired customers or purchases. It is not cost per lead, which divides spend by leads." },
   roas: { term: "ROAS", text: "Return on ad spend: revenue divided by ad spend. 3x means ads brought in three times what they cost. It measures revenue, not profit." },
 } as const;
 

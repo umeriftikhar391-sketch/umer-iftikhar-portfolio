@@ -51,6 +51,10 @@
       {
         "text": "Google Ads",
         "href": "/services/google-ads"
+      },
+      {
+        "text": "return on ad spend",
+        "href": "/tools/roas-calculator"
       }
     ],
     "sections": [
@@ -530,6 +534,10 @@
       {
         "text": "Meta Ads",
         "href": "/services/meta-ads"
+      },
+      {
+        "text": "return on ad spend",
+        "href": "/tools/roas-calculator"
       }
     ],
     "sections": [

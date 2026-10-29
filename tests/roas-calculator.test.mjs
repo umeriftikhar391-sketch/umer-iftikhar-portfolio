@@ -317,3 +317,54 @@ describe("Share links", () => {
     assert.deepEqual(d.forecast, {});
   });
 });
+
+describe("Page worked examples (must match the copy on /tools/roas-calculator)", () => {
+  const sample = { spend: 10000, revenue: 40000, acquisitions: null, grossMargin: 40, clicks: null, leads: null, impressions: null };
+  test("spend 10,000 and revenue 40,000 → 4x ROAS (400%)", () => {
+    const a = actualPerformance(sample);
+    close(a.roas.value, 4);
+    assert.equal(formatRoas(a.roas.value), "4.00x");
+    close(a.roas.value * 100, 400);
+  });
+  test("40% margin → 2.5x break-even ROAS", () => close(breakEvenRoas(40).value, 2.5));
+  test("revenue 40,000 at 40% margin minus spend 10,000 → 6,000 contribution profit", () => {
+    close(actualPerformance(sample).contributionProfit.value, 6000);
+  });
+  test("FAQ: same 4x at 20% margin → −2,000 and 5x break-even", () => {
+    const a = actualPerformance({ ...sample, grossMargin: 20 });
+    close(a.contributionProfit.value, -2000);
+    close(a.breakEvenRoas.value, 5);
+  });
+  test("zero spend gives no finite ROAS", () => {
+    const a = actualPerformance({ ...sample, spend: 0 });
+    assert.equal(a.roas.value, null);
+    assert.equal(formatRoas(a.roas.value), PLACEHOLDER);
+  });
+  test("zero or missing margin gives no break-even ROAS", () => {
+    assert.equal(breakEvenRoas(0).value, null);
+    assert.equal(breakEvenRoas(null).value, null);
+    assert.equal(actualPerformance({ ...sample, grossMargin: null }).breakEvenRoas.value, null);
+  });
+  test("missing revenue is not treated as a revenue result", () => {
+    const a = actualPerformance({ ...sample, revenue: null });
+    assert.equal(a.roas.value, null);
+    assert.equal(a.grossProfit.value, null);
+    assert.equal(a.contributionProfit.value, null);
+  });
+  test("changing currency never changes entered amounts", () => {
+    let s = calculatorReducer(INITIAL_STATE, { type: "setForecast", field: "budget", value: "10000" });
+    s = calculatorReducer(s, { type: "setActual", field: "spend", value: "10000" });
+    for (const currency of CURRENCIES) {
+      const next = calculatorReducer(s, { type: "setCurrency", currency });
+      assert.equal(next.forecast.budget, "10000");
+      assert.equal(next.actual.spend, "10000");
+    }
+    const viaCountry = calculatorReducer(s, { type: "setCountry", country: "AE", suggestedCurrency: "AED" });
+    assert.equal(viaCountry.forecast.budget, "10000");
+  });
+  test("lead-gen CPA divides by customers, not leads", () => {
+    const r = forecast(base);
+    close(r.costPerLead.value, 1000 / 50);
+    close(r.cpa.value, 1000 / 10);
+  });
+});

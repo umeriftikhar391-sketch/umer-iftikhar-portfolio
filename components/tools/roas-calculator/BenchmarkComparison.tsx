@@ -2,6 +2,7 @@ import { ExternalLink, Info } from "lucide-react";
 import type { BenchmarkMatch, ComparisonRow } from "@/lib/benchmarks/benchmark-matcher";
 import { formatCurrency, formatPercent, PLACEHOLDER } from "@/lib/calculators/format";
 
+const METRIC_NAME = { avgCpc: "CPC", avgCtr: "CTR", conversionRate: "Conversion rate", avgCpl: "Cost per lead", avgCpa: "CPA" } as const;
 const PLATFORM_NAME = { meta: "Meta Ads", "google-search": "Google Search Ads", "google-display": "Google Display Ads" } as const;
 
 /** Neutral difference wording: "18% higher" / "12% lower". No better/worse judgement without objective context. */
@@ -16,9 +17,9 @@ export function BenchmarkSource({ match }: { match: Extract<BenchmarkMatch, { st
   const r = match.record;
   return (
     <dl className="grid gap-x-6 gap-y-2 text-sm sm:grid-cols-2">
-      <div><dt className="inline font-semibold text-ink">Source: </dt><dd className="inline text-body">{r.sourceName} ({r.sourceCategory})</dd></div>
-      <div><dt className="inline font-semibold text-ink">Benchmark year: </dt><dd className="inline text-body">{r.year}</dd></div>
-      <div><dt className="inline font-semibold text-ink">Coverage: </dt><dd className="inline text-body">{match.coverageLabel}{match.level !== "country" ? " (broader than your country)" : ""}</dd></div>
+      <div><dt className="inline font-semibold text-ink">Publisher: </dt><dd className="inline text-body">{r.sourceName} ({r.sourceCategory})</dd></div>
+      <div><dt className="inline font-semibold text-ink">Reporting period: </dt><dd className="inline text-body">{r.year}</dd></div>
+      <div><dt className="inline font-semibold text-ink">Geographic coverage: </dt><dd className="inline text-body">{match.coverageLabel}{match.level !== "country" ? " (broader than your country)" : ""}</dd></div>
       <div><dt className="inline font-semibold text-ink">Platform: </dt><dd className="inline text-body">{PLATFORM_NAME[r.platform]}</dd></div>
       <div><dt className="inline font-semibold text-ink">Last verified: </dt><dd className="inline text-body">{r.verifiedAt}</dd></div>
       <div><dt className="inline font-semibold text-ink">Statistic: </dt><dd className="inline text-body">{r.statistic === "median" ? "Median" : "Average"}</dd></div>
@@ -30,6 +31,18 @@ export function BenchmarkSource({ match }: { match: Extract<BenchmarkMatch, { st
           </a>
         </dd>
       </div>
+      {Object.keys(r.metricDefinitions).length > 0 && (
+        <div className="sm:col-span-2">
+          <dt className="font-semibold text-ink">Metric definitions (as published):</dt>
+          <dd className="mt-1">
+            <ul className="list-disc space-y-1 pl-5 text-body">
+              {(Object.entries(r.metricDefinitions) as [keyof typeof METRIC_NAME, string][]).map(([key, text]) => (
+                <li key={key}><span className="font-medium text-ink">{METRIC_NAME[key]}:</span> {text}</li>
+              ))}
+            </ul>
+          </dd>
+        </div>
+      )}
       {r.limitations && <p className="text-slate-500 sm:col-span-2">Limitations: {r.limitations}</p>}
     </dl>
   );
@@ -39,7 +52,7 @@ export default function BenchmarkComparison({ match, rows, currency }: { match: 
   return (
     <section aria-labelledby="calc-benchmark-heading" className="rounded-2xl border border-line bg-white p-5 shadow-card sm:p-6">
       <h3 id="calc-benchmark-heading" className="text-lg font-bold tracking-tight text-ink">
-        How Your Forecast Compares With Industry Benchmarks
+        {match.status === "none" ? "Benchmark status" : "How Your Forecast Compares With a Published Benchmark"}
       </h3>
       {match.status === "none" ? (
         <div className="mt-4 flex gap-3 rounded-xl bg-blush p-4 text-sm leading-6 text-body">
